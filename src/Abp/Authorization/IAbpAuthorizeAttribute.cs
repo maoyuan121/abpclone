@@ -1,7 +1,7 @@
 ﻿namespace Abp.Authorization
 {
     /// <summary>
-    /// Defines standard interface for authorization attributes.
+    /// 权限的attribute
     /// </summary>
     public interface IAbpAuthorizeAttribute
     {

@@ -1,12 +1,12 @@
 namespace Abp.Localization
 {
     /// <summary>
-    /// Localization context.
+    /// 多语言上下文
     /// </summary>
     public interface ILocalizationContext
     {
         /// <summary>
-        /// Gets the localization manager.
+        /// 多语言管理器
         /// </summary>
         ILocalizationManager LocalizationManager { get; }
     }

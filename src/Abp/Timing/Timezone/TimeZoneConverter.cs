@@ -5,7 +5,7 @@ using Abp.Dependency;
 namespace Abp.Timing.Timezone
 {
     /// <summary>
-    /// Time zone converter class
+    /// 时区转换类
     /// </summary>
     public class TimeZoneConverter : ITimeZoneConverter, ITransientDependency
     {

@@ -4,6 +4,10 @@ using AutoMapper;
 
 namespace Abp.AutoMapper
 {
+    /// <summary>
+    /// AutoMapToAttribute
+    /// 将被修饰的类映射为制定的类
+    /// </summary>
     public class AutoMapToAttribute : AutoMapAttributeBase
     {
         public MemberList MemberList { get; set; } = MemberList.Source;
@@ -20,6 +24,11 @@ namespace Abp.AutoMapper
             MemberList = memberList;
         }
 
+        /// <summary>
+        /// 这个方法提供给外界调用创建automapper的映射
+        /// </summary>
+        /// <param name="configuration"></param>
+        /// <param name="type"></param>
         public override void CreateMap(IMapperConfigurationExpression configuration, Type type)
         {
             if (TargetTypes.IsNullOrEmpty())

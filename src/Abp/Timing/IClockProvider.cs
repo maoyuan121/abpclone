@@ -3,27 +3,27 @@
 namespace Abp.Timing
 {
     /// <summary>
-    /// Defines interface to perform some common date-time operations.
+    /// 定义一些通用的关于日期操作的接口
     /// </summary>
     public interface IClockProvider
     {
         /// <summary>
-        /// Gets Now.
+        /// 获取当前日期
         /// </summary>
         DateTime Now { get; }
 
         /// <summary>
-        /// Gets kind.
+        /// 获取DateTimeKind
         /// </summary>
         DateTimeKind Kind { get; }
 
         /// <summary>
-        /// Is that provider supports multiple time zone.
+        /// 是否支持多时区
         /// </summary>
         bool SupportsMultipleTimezone { get; }
 
         /// <summary>
-        /// Normalizes given <see cref="DateTime"/>.
+        /// 转换日期 <see cref="DateTime"/>.
         /// </summary>
         /// <param name="dateTime">DateTime to be normalized.</param>
         /// <returns>Normalized DateTime</returns>

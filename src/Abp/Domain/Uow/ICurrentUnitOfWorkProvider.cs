@@ -1,7 +1,7 @@
 ﻿namespace Abp.Domain.Uow
 {
     /// <summary>
-    /// Used to get/set current <see cref="IUnitOfWork"/>. 
+    /// 获取/设置当前的<see cref="IUnitOfWork"/>. 
     /// </summary>
     public interface ICurrentUnitOfWorkProvider
     {

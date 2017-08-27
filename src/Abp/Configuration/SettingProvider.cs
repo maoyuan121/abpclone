@@ -4,7 +4,7 @@ using Abp.Dependency;
 namespace Abp.Configuration
 {
     /// <summary>
-    /// Inherit this class to define settings for a module/application.
+    /// 配置定义提供者
     /// </summary>
     public abstract class SettingProvider : ITransientDependency
     {

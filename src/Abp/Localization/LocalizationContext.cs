@@ -3,7 +3,7 @@ using Abp.Dependency;
 namespace Abp.Localization
 {
     /// <summary>
-    /// Implements <see cref="ILocalizationContext"/>.
+    /// 多语言上下文<see cref="ILocalizationContext"/>.
     /// </summary>
     public class LocalizationContext : ILocalizationContext, ISingletonDependency
     {

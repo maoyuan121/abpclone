@@ -10,7 +10,7 @@ using Castle.Core;
 namespace Abp.Domain.Uow
 {
     /// <summary>
-    /// Base for all Unit Of Work classes.
+    /// 所有工作单元的基类
     /// </summary>
     public abstract class UnitOfWorkBase : IUnitOfWork
     {
@@ -19,19 +19,29 @@ namespace Abp.Domain.Uow
         [DoNotWire]
         public IUnitOfWork Outer { get; set; }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// 完成事件
+        /// </summary>
         public event EventHandler Completed;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// 失败事件
+        /// </summary>
         public event EventHandler<UnitOfWorkFailedEventArgs> Failed;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Dispose事件
+        /// </summary>
         public event EventHandler Disposed;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// 配置
+        /// </summary>
         public UnitOfWorkOptions Options { get; private set; }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// 数据过滤器
+        /// </summary>
         public IReadOnlyList<DataFilterConfiguration> Filters
         {
             get { return _filters.ToImmutableList(); }
@@ -39,12 +49,12 @@ namespace Abp.Domain.Uow
         private readonly List<DataFilterConfiguration> _filters;
 
         /// <summary>
-        /// Gets default UOW options.
+        /// 默认配置
         /// </summary>
         protected IUnitOfWorkDefaultOptions DefaultOptions { get; }
 
         /// <summary>
-        /// Gets the connection string resolver.
+        /// 连接字符串解析器
         /// </summary>
         protected IConnectionStringResolver ConnectionStringResolver { get; }
 
@@ -143,13 +153,20 @@ namespace Abp.Domain.Uow
             return new DisposeAction(() => EnableFilter(disabledFilters.ToArray()));
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// 启用数据过滤器
+        /// </summary>
+        /// <param name="filterNames">要启用的过滤器名</param>
+        /// <returns></returns>
         public IDisposable EnableFilter(params string[] filterNames)
         {
             //TODO: Check if filters exists?
 
+            // 将要启用的过滤器放到这个list里面
             var enabledFilters = new List<string>();
 
+            // 查找要启用的过滤器，如果过滤器没启用添加到要启用的集合里面去
+            // 并且重新初始化这个过滤器。
             foreach (var filterName in filterNames)
             {
                 var filterIndex = GetFilterIndex(filterName);
@@ -160,6 +177,7 @@ namespace Abp.Domain.Uow
                 }
             }
 
+            // 启用集合里面的过滤器
             enabledFilters.ForEach(ApplyEnableFilter);
 
             return new DisposeAction(() => DisableFilter(enabledFilters.ToArray()));
@@ -171,14 +189,20 @@ namespace Abp.Domain.Uow
             return GetFilter(filterName).IsEnabled;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// 设置过滤器的参数
+        /// </summary>
+        /// <param name="filterName">过滤器</param>
+        /// <param name="parameterName">参数名</param>
+        /// <param name="value">参数值</param>
+        /// <returns></returns>
         public IDisposable SetFilterParameter(string filterName, string parameterName, object value)
         {
             var filterIndex = GetFilterIndex(filterName);
 
             var newfilter = new DataFilterConfiguration(_filters[filterIndex]);
 
-            //Store old value
+            // 先保存这个过滤器参数以前的值
             object oldValue = null;
             var hasOldValue = newfilter.FilterParameters.ContainsKey(parameterName);
             if (hasOldValue)
@@ -186,12 +210,15 @@ namespace Abp.Domain.Uow
                 oldValue = newfilter.FilterParameters[parameterName];
             }
 
+            // 设置过滤器参数的值
             newfilter.FilterParameters[parameterName] = value;
 
             _filters[filterIndex] = newfilter;
 
+            // 应用过滤器参数
             ApplyFilterParameterValue(filterName, parameterName, value);
 
+            // 返回一个IDispose， 以便Dispose后将过滤器参数值设置为原来的值
             return new DisposeAction(() =>
             {
                 //Restore old value
@@ -207,6 +234,7 @@ namespace Abp.Domain.Uow
             var oldTenantId = _tenantId;
             _tenantId = tenantId;
 
+            // 根据tenantId的值，决定是启用还是禁用过滤器
             var mustHaveTenantEnableChange = tenantId == null
                 ? DisableFilter(AbpDataFilters.MustHaveTenant)
                 : EnableFilter(AbpDataFilters.MustHaveTenant);
@@ -349,6 +377,9 @@ namespace Abp.Domain.Uow
             Disposed.InvokeSafely(this);
         }
 
+        /// <summary>
+        /// 防止多次调用Begin()
+        /// </summary>
         private void PreventMultipleBegin()
         {
             if (_isBeginCalledBefore)

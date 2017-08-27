@@ -13,15 +13,16 @@ using Newtonsoft.Json;
 namespace Abp.BackgroundJobs
 {
     /// <summary>
-    /// Default implementation of <see cref="IBackgroundJobManager"/>.
+    /// 后台工作管理器
+    /// 实现<see cref="IBackgroundJobManager"/>.
     /// </summary>
     public class BackgroundJobManager : PeriodicBackgroundWorkerBase, IBackgroundJobManager, ISingletonDependency
     {
         public IEventBus EventBus { get; set; }
         
         /// <summary>
-        /// Interval between polling jobs from <see cref="IBackgroundJobStore"/>.
-        /// Default value: 5000 (5 seconds).
+        /// 从存储器中取工作的间隔时间
+        /// 默认: 5000 (5 seconds).
         /// </summary>
         public static int JobPollPeriod { get; set; }
 
@@ -50,6 +51,15 @@ namespace Abp.BackgroundJobs
             Timer.Period = JobPollPeriod;
         }
 
+        /// <summary>
+        /// 将工作插入到队列中
+        /// </summary>
+        /// <typeparam name="TJob"></typeparam>
+        /// <typeparam name="TArgs"></typeparam>
+        /// <param name="args"></param>
+        /// <param name="priority"></param>
+        /// <param name="delay"></param>
+        /// <returns></returns>
         public async Task EnqueueAsync<TJob, TArgs>(TArgs args, BackgroundJobPriority priority = BackgroundJobPriority.Normal, TimeSpan? delay = null)
             where TJob : IBackgroundJob<TArgs>
         {
@@ -68,6 +78,9 @@ namespace Abp.BackgroundJobs
             await _store.InsertAsync(jobInfo);
         }
 
+        /// <summary>
+        /// 从存储器中获取工作并执行
+        /// </summary>
         protected override void DoWork()
         {
             var waitingJobs = AsyncHelper.RunSync(() => _store.GetWaitingJobsAsync(1000));
@@ -78,6 +91,10 @@ namespace Abp.BackgroundJobs
             }
         }
 
+        /// <summary>
+        /// 执行工作
+        /// </summary>
+        /// <param name="jobInfo"></param>
         private void TryProcessJob(BackgroundJobInfo jobInfo)
         {
             try

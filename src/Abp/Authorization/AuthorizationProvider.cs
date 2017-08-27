@@ -3,8 +3,8 @@ using Abp.Dependency;
 namespace Abp.Authorization
 {
     /// <summary>
-    /// This is the main interface to define permissions for an application.
-    /// Implement it to define permissions for your module.
+    /// 这个接口用来定义一个应用的权限
+    /// 实现它来为你的module定义权限
     /// </summary>
     public abstract class AuthorizationProvider : ITransientDependency
     {

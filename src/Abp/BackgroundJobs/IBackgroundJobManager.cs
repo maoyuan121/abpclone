@@ -6,12 +6,12 @@ namespace Abp.BackgroundJobs
 {
     //TODO: Create a non-generic EnqueueAsync extension method to IBackgroundJobManager which takes types as input parameters rather than generic parameters.
     /// <summary>
-    /// Defines interface of a job manager.
+    /// 后台工作管理器
     /// </summary>
     public interface IBackgroundJobManager : IBackgroundWorker
     {
         /// <summary>
-        /// Enqueues a job to be executed.
+        /// 将要执行的工作插入到队列
         /// </summary>
         /// <typeparam name="TJob">Type of the job.</typeparam>
         /// <typeparam name="TArgs">Type of the arguments of job.</typeparam>

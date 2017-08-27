@@ -8,12 +8,12 @@ using Castle.Core.Logging;
 namespace Abp.BackgroundJobs
 {
     /// <summary>
-    /// Base class that can be used to implement <see cref="IBackgroundJob{TArgs}"/>.
+    /// 后台工作的基类，该类实现了<see cref="IBackgroundJob{TArgs}"/>.
     /// </summary>
     public abstract class BackgroundJob<TArgs> : IBackgroundJob<TArgs>
     {
         /// <summary>
-        /// Reference to the setting manager.
+        /// 配置管理器
         /// </summary>
         public ISettingManager SettingManager { protected get; set; }
 

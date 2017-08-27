@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Abp
 {
     /// <summary>
-    /// Base exception type for those are thrown by Abp system for Abp specific exceptions.
+    /// ABP的异常基类
     /// </summary>
     [Serializable]
     public class AbpException : Exception

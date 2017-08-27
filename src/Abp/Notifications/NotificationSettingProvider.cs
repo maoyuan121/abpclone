@@ -4,6 +4,9 @@ using Abp.Localization;
 
 namespace Abp.Notifications
 {
+    /// <summary>
+    /// 通知配置定义提供者
+    /// </summary>
     public class NotificationSettingProvider : SettingProvider
     {
         public override IEnumerable<SettingDefinition> GetSettingDefinitions(SettingDefinitionProviderContext context)

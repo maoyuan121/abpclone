@@ -3,14 +3,13 @@
 namespace Abp.Auditing
 {
     /// <summary>
-    /// This interface should be implemented by vendors to
-    /// make auditing working.
-    /// Default implementation is <see cref="SimpleLogAuditingStore"/>.
+    /// 用来存储审计日志
+    /// 默认实现为<see cref="SimpleLogAuditingStore"/>.
     /// </summary>
     public interface IAuditingStore
     {
         /// <summary>
-        /// Should save audits to a persistent store.
+        /// 保存审计日志
         /// </summary>
         /// <param name="auditInfo">Audit informations</param>
         Task SaveAsync(AuditInfo auditInfo);

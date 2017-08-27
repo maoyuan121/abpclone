@@ -4,6 +4,9 @@ using Abp.Localization.Sources;
 
 namespace Abp.Localization
 {
+    /// <summary>
+    /// 多语言管理器的空实现
+    /// </summary>
     public class NullLocalizationManager : ILocalizationManager
     {
         /// <summary>

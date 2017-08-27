@@ -4,6 +4,10 @@ using AutoMapper;
 
 namespace Abp.AutoMapper
 {
+    /// <summary>
+    /// AutoMapFromAttibute
+    /// 为制定的类型转为为被修饰的类型CreateMap
+    /// </summary>
     public class AutoMapFromAttribute : AutoMapAttributeBase
     {
         public MemberList MemberList { get; set; } = MemberList.Destination;

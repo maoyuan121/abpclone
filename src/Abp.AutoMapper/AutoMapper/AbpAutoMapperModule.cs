@@ -8,6 +8,9 @@ using Castle.MicroKernel.Registration;
 
 namespace Abp.AutoMapper
 {
+    /// <summary>
+    /// AutoMapper模块类
+    /// </summary>
     [DependsOn(typeof(AbpKernelModule))]
     public class AbpAutoMapperModule : AbpModule
     {
@@ -22,6 +25,10 @@ namespace Abp.AutoMapper
             _typeFinder = typeFinder;
         }
 
+        /// <summary>
+        /// 初始化前
+        /// 注册AbpAutoMapperConfiguration， 使用AutoMapperObejctMapper替代IObjectMapper
+        /// </summary>
         public override void PreInitialize()
         {
             IocManager.Register<IAbpAutoMapperConfiguration, AbpAutoMapperConfiguration>();
@@ -31,6 +38,9 @@ namespace Abp.AutoMapper
             Configuration.Modules.AbpAutoMapper().Configurators.Add(CreateCoreMappings);
         }
 
+        /// <summary>
+        /// 初始化后，CreateMapping, 注册IMapper为单例，找到ConfigurationExpression，注册他们
+        /// </summary>
         public override void PostInitialize()
         {
             CreateMappings();

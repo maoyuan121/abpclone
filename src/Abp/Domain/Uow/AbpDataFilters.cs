@@ -3,34 +3,31 @@ using Abp.Domain.Entities;
 namespace Abp.Domain.Uow
 {
     /// <summary>
-    /// Standard filters of ABP.
+    /// ABP中内置的数据过滤器
     /// </summary>
     public static class AbpDataFilters
     {
         /// <summary>
-        /// "SoftDelete".
-        /// Soft delete filter.
-        /// Prevents getting deleted data from database.
+        /// 软删除过滤器
+        /// 避免从数据库中将被逻辑删除的数据查出来
         /// See <see cref="ISoftDelete"/> interface.
         /// </summary>
         public const string SoftDelete = "SoftDelete";
 
         /// <summary>
         /// "MustHaveTenant".
-        /// Tenant filter to prevent getting data that is
-        /// not belong to current tenant.
+        /// 避免将不属于当前租户的数据查出来
         /// </summary>
         public const string MustHaveTenant = "MustHaveTenant";
 
         /// <summary>
         /// "MayHaveTenant".
-        /// Tenant filter to prevent getting data that is
-        /// not belong to current tenant.
+        /// 避免将不属于当前租户的数据查出来
         /// </summary>
         public const string MayHaveTenant = "MayHaveTenant";
 
         /// <summary>
-        /// Standard parameters of ABP.
+        /// ABP中内置的数据过滤器的参数
         /// </summary>
         public static class Parameters
         {

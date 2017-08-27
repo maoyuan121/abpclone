@@ -1,7 +1,7 @@
 ﻿namespace Abp.Threading.BackgroundWorkers
 {
     /// <summary>
-    /// Interface for a worker (thread) that runs on background to perform some tasks.
+    /// 定义一个接口，用来在后台线程执行一些任务
     /// </summary>
     public interface IBackgroundWorker : IRunnable
     {

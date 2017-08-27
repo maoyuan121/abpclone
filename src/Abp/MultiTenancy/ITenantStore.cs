@@ -2,6 +2,9 @@ using JetBrains.Annotations;
 
 namespace Abp.MultiTenancy
 {
+    /// <summary>
+    /// ×â»§´æ´¢
+    /// </summary>
     public interface ITenantStore
     {
         [CanBeNull]

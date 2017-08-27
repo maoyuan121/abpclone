@@ -2,6 +2,9 @@
 
 namespace Abp.Localization
 {
+    /// <summary>
+    /// 用于多语言的attribute
+    /// </summary>
     public class AbpDisplayNameAttribute : DisplayNameAttribute
     {
         public override string DisplayName => LocalizationHelper.GetString(SourceName, Key);

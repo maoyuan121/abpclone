@@ -6,10 +6,13 @@ using Abp.Collections.Extensions;
 namespace Abp.Modules
 {
     /// <summary>
-    /// Used to store AbpModuleInfo objects as a dictionary.
+    /// 用来存储AbpModuleInfo对象的集合对象
     /// </summary>
     internal class AbpModuleCollection : List<AbpModuleInfo>
     {
+        /// <summary>
+        /// 作为开始的Module
+        /// </summary>
         public Type StartupModuleType { get; }
 
         public AbpModuleCollection(Type startupModuleType)
@@ -34,18 +37,24 @@ namespace Abp.Modules
         }
 
         /// <summary>
-        /// Sorts modules according to dependencies.
-        /// If module A depends on module B, A comes after B in the returned List.
+        /// 根据依赖关系对模块集合进行排序
+        /// 如果A依赖B，A在B之后
         /// </summary>
         /// <returns>Sorted list</returns>
         public List<AbpModuleInfo> GetSortedModuleListByDependency()
         {
             var sortedModules = this.SortByDependencies(x => x.Dependencies);
+
             EnsureKernelModuleToBeFirst(sortedModules);
             EnsureStartupModuleToBeLast(sortedModules, StartupModuleType);
+
             return sortedModules;
         }
 
+        /// <summary>
+        /// 确保核心模块放在集合的第一个
+        /// </summary>
+        /// <param name="modules"></param>
         public static void EnsureKernelModuleToBeFirst(List<AbpModuleInfo> modules)
         {
             var kernelModuleIndex = modules.FindIndex(m => m.Type == typeof(AbpKernelModule));
@@ -60,6 +69,11 @@ namespace Abp.Modules
             modules.Insert(0, kernelModule);
         }
 
+        /// <summary>
+        /// 确保指定的startupModuleType模块放在最后一个
+        /// </summary>
+        /// <param name="modules"></param>
+        /// <param name="startupModuleType"></param>
         public static void EnsureStartupModuleToBeLast(List<AbpModuleInfo> modules, Type startupModuleType)
         {
             var startupModuleIndex = modules.FindIndex(m => m.Type == startupModuleType);

@@ -8,7 +8,8 @@ using Abp.Timing;
 namespace Abp.BackgroundJobs
 {
     /// <summary>
-    /// Represents a background job info that is used to persist jobs.
+    /// 后台工作信息，
+    /// 这个信息用来持续化job
     /// </summary>
     [Table("AbpBackgroundJobs")]
     [MultiTenancySide(MultiTenancySides.Host)]
@@ -21,8 +22,8 @@ namespace Abp.BackgroundJobs
         public const int MaxJobTypeLength = 512;
 
         /// <summary>
-        /// Maximum length of <see cref="JobArgs"/>.
-        /// Value: 1 MB (1,048,576 bytes).
+        /// JobArgs<see cref="JobArgs"/>的最大容量.
+        /// 值: 1 MB (1,048,576 bytes).
         /// </summary>
         public const int MaxJobArgsLength = 1024 * 1024;
 
@@ -33,7 +34,7 @@ namespace Abp.BackgroundJobs
         public static int DefaultFirstWaitDuration { get; set; }
 
         /// <summary>
-        /// Default timeout value (as seconds) for a job before it's abandoned (<see cref="IsAbandoned"/>).
+        /// 默认的超时时间 (单位为秒) for a job before it's abandoned (<see cref="IsAbandoned"/>).
         /// Default value: 172,800 (2 days).
         /// </summary>
         public static int DefaultTimeout { get; set; }
@@ -46,45 +47,43 @@ namespace Abp.BackgroundJobs
         public static double DefaultWaitFactor { get; set; }
 
         /// <summary>
-        /// Type of the job.
-        /// It's AssemblyQualifiedName of job type.
+        /// 工作的类型
         /// </summary>
         [Required]
         [StringLength(MaxJobTypeLength)]
         public virtual string JobType { get; set; }
 
         /// <summary>
-        /// Job arguments as JSON string.
+        /// 工作参数
         /// </summary>
         [Required]
         [MaxLength(MaxJobArgsLength)]
         public virtual string JobArgs { get; set; }
 
         /// <summary>
-        /// Try count of this job.
-        /// A job is re-tried if it fails.
+        /// 重试次数
         /// </summary>
         public virtual short TryCount { get; set; }
 
         /// <summary>
-        /// Next try time of this job.
+        /// 下次执行时间
         /// </summary>
         //[Index("IX_IsAbandoned_NextTryTime", 2)]
         public virtual DateTime NextTryTime { get; set; }
 
         /// <summary>
-        /// Last try time of this job.
+        /// 最后一次执行时间
         /// </summary>
         public virtual DateTime? LastTryTime { get; set; }
 
         /// <summary>
-        /// This is true if this job is continously failed and will not be executed again.
+        /// 是否放弃，不再执行
         /// </summary>
         //[Index("IX_IsAbandoned_NextTryTime", 1)]
         public virtual bool IsAbandoned { get; set; }
 
         /// <summary>
-        /// Priority of this job.
+        /// 工作的优先级别
         /// </summary>
         public virtual BackgroundJobPriority Priority { get; set; }
 
@@ -105,7 +104,7 @@ namespace Abp.BackgroundJobs
         }
 
         /// <summary>
-        /// Calculates next try time if a job fails.
+        /// 计算下一次重试时间
         /// Returns null if it will not wait anymore and job should be abandoned.
         /// </summary>
         /// <returns></returns>

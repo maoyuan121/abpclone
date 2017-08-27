@@ -3,7 +3,7 @@
 namespace Abp.Authorization
 {
     /// <summary>
-    /// Used to allow a method to be accessed by any user.
+    /// 让一个方法能被匿名用户访问
     /// Suppress <see cref="AbpAuthorizeAttribute"/> defined in the class containing that method.
     /// </summary>
     public class AbpAllowAnonymousAttribute : Attribute, IAbpAllowAnonymousAttribute

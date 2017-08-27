@@ -3,24 +3,23 @@
 namespace Abp.Configuration
 {
     /// <summary>
-    /// Defines scope of a setting.
+    /// 定义配置的范围
     /// </summary>
     [Flags]
     public enum SettingScopes
     {
         /// <summary>
-        /// Represents a setting that can be configured/changed for the application level.
+        /// 应用级别的配置
         /// </summary>
         Application = 1,
 
         /// <summary>
-        /// Represents a setting that can be configured/changed for each Tenant.
-        /// This is reserved
+        /// 租户级别的配置
         /// </summary>
         Tenant = 2,
 
         /// <summary>
-        /// Represents a setting that can be configured/changed for each User.
+        /// 用户级别的配置
         /// </summary>
         User = 4
     }

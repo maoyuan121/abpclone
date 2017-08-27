@@ -1,17 +1,17 @@
 ﻿namespace Abp.Threading
 {
     /// <summary>
-    /// Interface to start/stop self threaded services.
+    /// 定义开始/停止线程服务的接口
     /// </summary>
     public interface IRunnable
     {
         /// <summary>
-        /// Starts the service.
+        /// 开始服务
         /// </summary>
         void Start();
 
         /// <summary>
-        /// Sends stop command to the service.
+        /// 停止服务Sends stop command to the service.
         /// Service may return immediately and stop asynchronously.
         /// A client should then call <see cref="WaitToStop"/> method to ensure it's stopped.
         /// </summary>

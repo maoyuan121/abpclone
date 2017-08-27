@@ -10,7 +10,7 @@ using Castle.Core.Logging;
 namespace Abp.Modules
 {
     /// <summary>
-    /// This class must be implemented by all module definition classes.
+    /// 所有的模块都继承自这个类
     /// </summary>
     /// <remarks>
     /// A module definition class is generally located in it's own assembly
@@ -40,8 +40,8 @@ namespace Abp.Modules
         }
 
         /// <summary>
-        /// This is the first event called on application startup. 
-        /// Codes can be placed here to run before dependency injection registrations.
+        /// 应用启用的时候第一个调用的事件
+        /// 这里的代码可以是依赖注入之前的代码
         /// </summary>
         public virtual void PreInitialize()
         {
@@ -49,7 +49,7 @@ namespace Abp.Modules
         }
 
         /// <summary>
-        /// This method is used to register dependencies for this module.
+        /// 这个方法用来注册这个模块的依赖注入
         /// </summary>
         public virtual void Initialize()
         {
@@ -57,7 +57,7 @@ namespace Abp.Modules
         }
 
         /// <summary>
-        /// This method is called lastly on application startup.
+        /// 这个方法在应用启用后最后调用
         /// </summary>
         public virtual void PostInitialize()
         {
@@ -65,7 +65,7 @@ namespace Abp.Modules
         }
 
         /// <summary>
-        /// This method is called when the application is being shutdown.
+        /// 这个方法在应用关闭的时候调用This method is called when the application is being shutdown.
         /// </summary>
         public virtual void Shutdown()
         {
@@ -78,7 +78,7 @@ namespace Abp.Modules
         }
 
         /// <summary>
-        /// Checks if given type is an Abp module class.
+        /// 判断一个类是不是Abp模块类
         /// </summary>
         /// <param name="type">Type to check</param>
         public static bool IsAbpModule(Type type)
@@ -91,7 +91,7 @@ namespace Abp.Modules
         }
 
         /// <summary>
-        /// Finds direct depended modules of a module (excluding given module).
+        /// 获取指定模块类的依赖的类
         /// </summary>
         public static List<Type> FindDependedModuleTypes(Type moduleType)
         {
@@ -117,6 +117,11 @@ namespace Abp.Modules
             return list;
         }
 
+        /// <summary>
+        /// 递归的查找依赖模块类
+        /// </summary>
+        /// <param name="moduleType"></param>
+        /// <returns></returns>
         public static List<Type> FindDependedModuleTypesRecursivelyIncludingGivenModule(Type moduleType)
         {
             var list = new List<Type>();
@@ -125,6 +130,11 @@ namespace Abp.Modules
             return list;
         }
 
+        /// <summary>
+        /// 递归的查找依赖模块类
+        /// </summary>
+        /// <param name="modules"></param>
+        /// <param name="module"></param>
         private static void AddModuleAndDependenciesResursively(List<Type> modules, Type module)
         {
             if (!IsAbpModule(module))

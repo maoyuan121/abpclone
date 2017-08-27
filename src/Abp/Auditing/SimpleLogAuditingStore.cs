@@ -4,12 +4,12 @@ using Castle.Core.Logging;
 namespace Abp.Auditing
 {
     /// <summary>
-    /// Implements <see cref="IAuditingStore"/> to simply write audits to logs.
+    /// 实现<see cref="IAuditingStore"/>存储审计日志
     /// </summary>
     public class SimpleLogAuditingStore : IAuditingStore
     {
         /// <summary>
-        /// Singleton instance.
+        /// 单例
         /// </summary>
         public static SimpleLogAuditingStore Instance { get; } = new SimpleLogAuditingStore();
 

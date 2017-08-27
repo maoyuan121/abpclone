@@ -3,12 +3,12 @@
 namespace Abp.BackgroundJobs
 {
     /// <summary>
-    /// Used to configure background job system.
+    /// 后台工作的配置
     /// </summary>
     public interface IBackgroundJobConfiguration
     {
         /// <summary>
-        /// Used to enable/disable background job execution.
+        /// 启用还是禁用后台工作
         /// </summary>
         bool IsJobExecutionEnabled { get; set; }
 

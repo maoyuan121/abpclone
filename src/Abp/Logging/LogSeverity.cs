@@ -1,7 +1,7 @@
 namespace Abp.Logging
 {
     /// <summary>
-    /// Indicates severity for log.
+    /// 日志级别
     /// </summary>
     public enum LogSeverity
     {

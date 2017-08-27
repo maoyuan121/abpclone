@@ -5,6 +5,9 @@ using Abp.Modules;
 
 namespace Abp.Reflection
 {
+    /// <summary>
+    /// 程序集查找器
+    /// </summary>
     public class AbpAssemblyFinder : IAssemblyFinder
     {
         private readonly IAbpModuleManager _moduleManager;

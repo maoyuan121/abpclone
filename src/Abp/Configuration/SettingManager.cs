@@ -10,7 +10,7 @@ using Abp.Runtime.Session;
 
 namespace Abp.Configuration
 {
-    /// <summary>
+    /// <summary> 
     /// This class implements <see cref="ISettingManager"/> to manage setting values in the database.
     /// </summary>
     public class SettingManager : ISettingManager, ISingletonDependency

@@ -6,7 +6,7 @@ using Castle.DynamicProxy;
 namespace Abp.Runtime.Validation.Interception
 {
     /// <summary>
-    /// This interceptor is used intercept method calls for classes which's methods must be validated.
+    /// 验证截断器
     /// </summary>
     public class ValidationInterceptor : IInterceptor
     {

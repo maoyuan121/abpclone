@@ -6,32 +6,32 @@ using JetBrains.Annotations;
 namespace Abp.Modules
 {
     /// <summary>
-    /// Used to store all needed information for a module.
+    /// 模块信息类
     /// </summary>
     public class AbpModuleInfo
     {
         /// <summary>
-        /// The assembly which contains the module definition.
+        /// 模块所在的程序集
         /// </summary>
         public Assembly Assembly { get; }
 
         /// <summary>
-        /// Type of the module.
+        /// 模块类
         /// </summary>
         public Type Type { get; }
 
         /// <summary>
-        /// Instance of the module.
+        /// 模块实例
         /// </summary>
         public AbpModule Instance { get; }
 
         /// <summary>
-        /// Is this module loaded as a plugin.
+        /// 这个模块是否是作为插件载入的
         /// </summary>
         public bool IsLoadedAsPlugIn { get; }
 
         /// <summary>
-        /// All dependent modules of this module.
+        /// 这个模块所依赖的模块
         /// </summary>
         public List<AbpModuleInfo> Dependencies { get; }
 

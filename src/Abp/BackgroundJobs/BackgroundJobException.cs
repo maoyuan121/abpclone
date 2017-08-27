@@ -4,6 +4,9 @@ using JetBrains.Annotations;
 
 namespace Abp.BackgroundJobs
 {
+    /// <summary>
+    /// 后台工作的异常
+    /// </summary>
     [Serializable]
     public class BackgroundJobException : AbpException
     {

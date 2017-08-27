@@ -3,9 +3,8 @@ using System;
 namespace Abp.Domain.Uow
 {
     /// <summary>
-    /// Defines a unit of work.
-    /// This interface is internally used by ABP.
-    /// Use <see cref="IUnitOfWorkManager.Begin()"/> to start a new unit of work.
+    /// 这个接口是在ABP内部使用了，不要直接用这个接口
+    /// 使用<see cref="IUnitOfWorkManager.Begin()"/>开始一个工作单元
     /// </summary>
     public interface IUnitOfWork : IActiveUnitOfWork, IUnitOfWorkCompleteHandle
     {
@@ -20,7 +19,7 @@ namespace Abp.Domain.Uow
         IUnitOfWork Outer { get; set; }
         
         /// <summary>
-        /// Begins the unit of work with given options.
+        /// 使用给定的option开始一个工作单元
         /// </summary>
         /// <param name="options">Unit of work options</param>
         void Begin(UnitOfWorkOptions options);

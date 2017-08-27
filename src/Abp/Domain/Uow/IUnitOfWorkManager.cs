@@ -3,8 +3,9 @@
 namespace Abp.Domain.Uow
 {
     /// <summary>
-    /// Unit of work manager.
-    /// Used to begin and control a unit of work.
+    /// uow管理器.
+    /// 用来开始和控制一个工作单元
+    /// 主要方法为Begin和一个返回IActiveUnitOfWork的Current方法
     /// </summary>
     public interface IUnitOfWorkManager
     {

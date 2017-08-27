@@ -5,6 +5,9 @@ using Abp.MultiTenancy;
 
 namespace Abp.Authorization
 {
+    /// <summary>
+    /// 权限定义上下文基类
+    /// </summary>
     internal abstract class PermissionDefinitionContextBase : IPermissionDefinitionContext
     {
         protected readonly PermissionDictionary Permissions;
@@ -14,6 +17,16 @@ namespace Abp.Authorization
             Permissions = new PermissionDictionary();
         }
 
+        /// <summary>
+        /// 创建权限，并将权限添加到权限字典中
+        /// 返回新建的权限
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="displayName"></param>
+        /// <param name="description"></param>
+        /// <param name="multiTenancySides"></param>
+        /// <param name="featureDependency"></param>
+        /// <returns></returns>
         public Permission CreatePermission(
             string name, 
             ILocalizableString displayName = null, 
@@ -31,6 +44,11 @@ namespace Abp.Authorization
             return permission;
         }
 
+        /// <summary>
+        /// 在权限字典中返回指定唯一名的权限
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public Permission GetPermissionOrNull(string name)
         {
             return Permissions.GetOrDefault(name);

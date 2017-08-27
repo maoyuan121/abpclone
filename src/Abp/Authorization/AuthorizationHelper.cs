@@ -11,6 +11,9 @@ using Abp.Runtime.Session;
 
 namespace Abp.Authorization
 {
+    /// <summary>
+    /// 权限帮助类
+    /// </summary>
     internal class AuthorizationHelper : IAuthorizationHelper, ITransientDependency
     {
         public IAbpSession AbpSession { get; set; }

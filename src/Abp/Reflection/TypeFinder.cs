@@ -7,6 +7,9 @@ using Castle.Core.Logging;
 
 namespace Abp.Reflection
 {
+    /// <summary>
+    /// 类查找器
+    /// </summary>
     public class TypeFinder : ITypeFinder
     {
         public ILogger Logger { get; set; }

@@ -11,7 +11,7 @@ using Castle.Core.Logging;
 namespace Abp.Modules
 {
     /// <summary>
-    /// This class is used to manage modules.
+    /// 模块管理器
     /// </summary>
     public class AbpModuleManager : IAbpModuleManager
     {
@@ -34,12 +34,20 @@ namespace Abp.Modules
             Logger = NullLogger.Instance;
         }
 
+        /// <summary>
+        /// 初始化模块，加载所有的模块
+        /// </summary>
+        /// <param name="startupModule"></param>
         public virtual void Initialize(Type startupModule)
         {
             _modules = new AbpModuleCollection(startupModule);
             LoadAllModules();
         }
 
+        /// <summary>
+        /// 启动模块
+        /// 对所有的模块按照依赖的关系进行排序 然后分配启动模块
+        /// </summary>
         public virtual void StartModules()
         {
             var sortedModules = _modules.GetSortedModuleListByDependency();
@@ -59,6 +67,9 @@ namespace Abp.Modules
             Logger.Debug("Shutting down completed.");
         }
 
+        /// <summary>
+        /// 加载所有的模块
+        /// </summary>
         private void LoadAllModules()
         {
             Logger.Debug("Loading Abp modules...");
@@ -68,12 +79,16 @@ namespace Abp.Modules
 
             Logger.Debug("Found " + moduleTypes.Count + " ABP modules in total.");
 
+            // 将所有的模块注入的ioc中
             RegisterModules(moduleTypes);
+
+            // 创建模块
             CreateModules(moduleTypes, plugInModuleTypes);
 
             _modules.EnsureKernelModuleToBeFirst();
             _modules.EnsureStartupModuleToBeLast();
 
+            // 设置所有模块的依赖模块
             SetDependencies();
 
             Logger.DebugFormat("{0} modules loaded.", _modules.Count);
@@ -96,6 +111,12 @@ namespace Abp.Modules
             return modules;
         }
 
+        /// <summary>
+        /// 创建模块
+        /// 根据模块类创建对应的ModuleInfo
+        /// </summary>
+        /// <param name="moduleTypes"></param>
+        /// <param name="plugInModuleTypes"></param>
         private void CreateModules(ICollection<Type> moduleTypes, List<Type> plugInModuleTypes)
         {
             foreach (var moduleType in moduleTypes)
@@ -122,6 +143,10 @@ namespace Abp.Modules
             }
         }
 
+        /// <summary>
+        /// 将所有的模块注入的ioc中
+        /// </summary>
+        /// <param name="moduleTypes"></param>
         private void RegisterModules(ICollection<Type> moduleTypes)
         {
             foreach (var moduleType in moduleTypes)
@@ -130,6 +155,9 @@ namespace Abp.Modules
             }
         }
 
+        /// <summary>
+        /// 设置所有模块的依赖模块
+        /// </summary>
         private void SetDependencies()
         {
             foreach (var moduleInfo in _modules)

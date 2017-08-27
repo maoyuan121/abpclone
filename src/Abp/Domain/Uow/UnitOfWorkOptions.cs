@@ -6,7 +6,8 @@ using System.Transactions;
 namespace Abp.Domain.Uow
 {
     /// <summary>
-    /// Unit of work options.
+    /// 工作单元的配置
+    /// 配置超时、事件隔离级别等
     /// </summary>
     public class UnitOfWorkOptions
     {

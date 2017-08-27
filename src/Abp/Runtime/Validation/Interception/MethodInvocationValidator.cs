@@ -13,7 +13,8 @@ using Abp.Reflection;
 namespace Abp.Runtime.Validation.Interception
 {
     /// <summary>
-    /// This class is used to validate a method call (invocation) for method arguments.
+    /// 方法调用验证器
+    /// 该类用来验证被调用方法的参数
     /// </summary>
     public class MethodInvocationValidator : ITransientDependency
     {
@@ -58,7 +59,11 @@ namespace Abp.Runtime.Validation.Interception
         }
 
         /// <summary>
-        /// Validates the method invocation.
+        /// 验证总方法
+        /// 如果方法不是公共的，那么不需要验证
+        /// 如果方法已经禁用了验证，那么不需要验证
+        /// 如果方法没有参数，那么不需要验证
+        /// 如果验证失败，抛出验证异常
         /// </summary>
         public void Validate()
         {
@@ -68,7 +73,7 @@ namespace Abp.Runtime.Validation.Interception
             {
                 return;
             }
-
+            
             if (IsValidationDisabled())
             {
                 return;                
@@ -103,6 +108,9 @@ namespace Abp.Runtime.Validation.Interception
             }
         }
 
+        /// <summary>
+        /// 检查是否已初始化
+        /// </summary>
         private void CheckInitialized()
         {
             if (Method == null)
@@ -111,8 +119,13 @@ namespace Abp.Runtime.Validation.Interception
             }
         }
 
+        /// <summary>
+        /// 是否禁用验证
+        /// </summary>
+        /// <returns></returns>
         protected virtual bool IsValidationDisabled()
         {
+            // 如果方法没有被EnableValidationAttribute=true修饰那么就是没禁用
             if (Method.IsDefined(typeof(EnableValidationAttribute), true))
             {
                 return false;
@@ -122,12 +135,13 @@ namespace Abp.Runtime.Validation.Interception
         }
 
         /// <summary>
-        /// Validates given parameter for given value.
+        /// 验证参数
         /// </summary>
-        /// <param name="parameterInfo">Parameter of the method to validate</param>
-        /// <param name="parameterValue">Value to validate</param>
+        /// <param name="parameterInfo">参数</param>
+        /// <param name="parameterValue">参数值</param>
         protected virtual void ValidateMethodParameter(ParameterInfo parameterInfo, object parameterValue)
         {
+            // 如果值为空，而参数不是可选的并且不是out类型，并且是不是可空的简单数据类型，那么验证不通过
             if (parameterValue == null)
             {
                 if (!parameterInfo.IsOptional && 
@@ -139,10 +153,15 @@ namespace Abp.Runtime.Validation.Interception
 
                 return;
             }
-
+            
+            // 验证参数对象
             ValidateObjectRecursively(parameterValue);
         }
 
+        /// <summary>
+        /// 验证参数
+        /// </summary>
+        /// <param name="validatingObject"></param>
         protected virtual void ValidateObjectRecursively(object validatingObject)
         {
             if (validatingObject == null)
@@ -150,9 +169,10 @@ namespace Abp.Runtime.Validation.Interception
                 return;
             }
 
+            // 通过DataAnnotation来验证属性
             SetDataAnnotationAttributeErrors(validatingObject);
 
-            //Validate items of enumerable
+            // 验证集合类型对象的item
             if (validatingObject is IEnumerable && !(validatingObject is IQueryable))
             {
                 foreach (var item in (validatingObject as IEnumerable))
@@ -161,7 +181,7 @@ namespace Abp.Runtime.Validation.Interception
                 }
             }
 
-            //Custom validations
+            // 通过自定义的validation来验证
             (validatingObject as ICustomValidate)?.AddValidationErrors(
                 new CustomValidationContext(
                     ValidationErrors,
@@ -193,7 +213,7 @@ namespace Abp.Runtime.Validation.Interception
             {
                 return;
             }
-
+            
             var properties = TypeDescriptor.GetProperties(validatingObject).Cast<PropertyDescriptor>();
             foreach (var property in properties)
             {
@@ -207,7 +227,7 @@ namespace Abp.Runtime.Validation.Interception
         }
 
         /// <summary>
-        /// Checks all properties for DataAnnotations attributes.
+        /// 通过DataAnnotation来验证属性
         /// </summary>
         protected virtual void SetDataAnnotationAttributeErrors(object validatingObject)
         {

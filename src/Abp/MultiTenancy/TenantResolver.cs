@@ -7,7 +7,7 @@ using Castle.Core.Logging;
 
 namespace Abp.MultiTenancy
 {
-    public class TenantResolver : ITenantResolver, ITransientDependency
+    public class TenantResolver : ITenantResolver, ITransientDependency 
     {
         private const string AmbientScopeContextKey = "Abp.MultiTenancy.TenantResolver.Resolving";
 
@@ -20,7 +20,7 @@ namespace Abp.MultiTenancy
         private readonly IAmbientScopeProvider<bool> _ambientScopeProvider;
 
         public TenantResolver(
-            IMultiTenancyConfig multiTenancy,
+            IMultiTenancyConfig multiTenancy, 
             IIocResolver iocResolver,
             ITenantStore tenantStore,
             ITenantResolverCache cache,

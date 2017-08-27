@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Abp.Domain.Entities
 {
     /// <summary>
-    /// This exception is thrown if an entity excepted to be found but not found.
+    /// 没找到实体的异常
     /// </summary>
     [Serializable]
     public class EntityNotFoundException : AbpException

@@ -10,6 +10,9 @@ using Castle.Core.Logging;
 
 namespace Abp.Localization
 {
+    /// <summary>
+    /// ∂‡”Ô—‘π‹¿Ì∆˜
+    /// </summary>
     internal class LocalizationManager : ILocalizationManager
     {
         public ILogger Logger { get; set; }

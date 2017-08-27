@@ -3,30 +3,30 @@
 namespace Abp.Configuration
 {
     /// <summary>
-    /// Represents a setting information.
+    /// 配置信息
     /// </summary>
     [Serializable]
     public class SettingInfo
     {
         /// <summary>
-        /// TenantId for this setting.
-        /// TenantId is null if this setting is not Tenant level.
+        /// 租户Id
+        /// 如果为空，那么这个配置不是租户级别的
         /// </summary>
         public int? TenantId { get; set; }
 
         /// <summary>
-        /// UserId for this setting.
-        /// UserId is null if this setting is not user level.
+        /// 用户Id
+        /// 如果为空，那么这个配置不是用户级别的
         /// </summary>
         public long? UserId { get; set; }
 
         /// <summary>
-        /// Unique name of the setting.
+        /// 配置的唯一名.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Value of the setting.
+        /// 配置的值
         /// </summary>
         public string Value { get; set; }
 

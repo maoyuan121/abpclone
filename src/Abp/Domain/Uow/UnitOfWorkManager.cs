@@ -5,7 +5,9 @@ using Abp.Dependency;
 namespace Abp.Domain.Uow
 {
     /// <summary>
-    /// Unit of work manager.
+    /// uow管理器.
+    /// 用来开始和控制一个工作单元
+    /// 主要方法为Begin和一个返回IUnitOfWork的Current方法
     /// </summary>
     internal class UnitOfWorkManager : IUnitOfWorkManager, ITransientDependency
     {
@@ -66,7 +68,7 @@ namespace Abp.Domain.Uow
                 _iocResolver.Release(uow);
             };
 
-            //Inherit filters from outer UOW
+            // 内部工作单元继承外部工作单元的数据过滤器
             if (outerUow != null)
             {
                 options.FillOuterUowFiltersForNonProvidedOptions(outerUow.Filters.ToList());
@@ -74,7 +76,7 @@ namespace Abp.Domain.Uow
 
             uow.Begin(options);
 
-            //Inherit tenant if from outer UOW
+            // 继承外部工作单元的tenant
             if (outerUow != null)
             {
                 uow.SetTenantId(outerUow.GetTenantId());

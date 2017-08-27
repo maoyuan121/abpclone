@@ -6,12 +6,14 @@ using Abp.Domain.Repositories;
 namespace Abp.Domain.Uow
 {
     /// <summary>
-    /// A helper class to simplify unit of work process.
+    /// uow的帮助类
+    /// 主要用于判断一个类或者方法是否应该启用工作单元
     /// </summary>
     internal static class UnitOfWorkHelper
     {
         /// <summary>
-        /// Returns true if UOW must be used for given type as convention.
+        /// 是否按照默认约定这个类是使用uow的
+        /// 如IRepository, IApplicationService的实现者
         /// </summary>
         /// <param name="type">Type to check</param>
         public static bool IsConventionalUowClass(Type type)

@@ -1,17 +1,17 @@
 ﻿namespace Abp.Configuration
 {
     /// <summary>
-    /// Represents value of a setting.
+    /// 配置值
     /// </summary>
     public interface ISettingValue
     {
         /// <summary>
-        /// Unique name of the setting.
+        /// 配置唯一名
         /// </summary>
         string Name { get; }
         
         /// <summary>
-        /// Value of the setting.
+        /// 配置值
         /// </summary>
         string Value { get; }
     }

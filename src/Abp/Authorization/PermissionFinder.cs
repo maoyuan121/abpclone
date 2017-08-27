@@ -4,8 +4,8 @@ using System.Collections.Immutable;
 namespace Abp.Authorization
 {
     /// <summary>
-    /// This class is used to get permissions out of the system.
-    /// Normally, you should inject and use <see cref="IPermissionManager"/> and use it.
+    /// 权限查找器，用来获取系统的权限
+    /// 通常，应该注入<see cref="IPermissionManager"/>来使用它
     /// This class can be used in database migrations or in unit tests where Abp is not initialized.
     /// </summary>
     public static class PermissionFinder

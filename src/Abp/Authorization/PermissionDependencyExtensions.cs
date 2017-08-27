@@ -3,7 +3,7 @@ using Abp.Threading;
 namespace Abp.Authorization
 {
     /// <summary>
-    /// Extension methods for <see cref="IPermissionDependency"/>.
+    /// 依赖权限<see cref="IPermissionDependency"/>的扩展
     /// </summary>
     public static class PermissionDependencyExtensions
     {

@@ -5,12 +5,12 @@ using Abp.MultiTenancy;
 namespace Abp.Authorization
 {
     /// <summary>
-    /// This context is used on <see cref="AuthorizationProvider.SetPermissions"/> method.
+    /// 权限定义的上下文，在<see cref="AuthorizationProvider.SetPermissions"/>中使用.
     /// </summary>
     public interface IPermissionDefinitionContext
     {
         /// <summary>
-        /// Creates a new permission under this group.
+        /// 定义一个权限
         /// </summary>
         /// <param name="name">Unique name of the permission</param>
         /// <param name="displayName">Display name of the permission</param>
@@ -27,7 +27,7 @@ namespace Abp.Authorization
             );
 
         /// <summary>
-        /// Gets a permission with given name or null if can not find.
+        /// 根据权限名获取权限
         /// </summary>
         /// <param name="name">Unique name of the permission</param>
         /// <returns>Permission object or null</returns>

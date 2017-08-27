@@ -5,7 +5,7 @@ using Castle.DynamicProxy;
 namespace Abp.Domain.Uow
 {
     /// <summary>
-    /// This interceptor is used to manage database connection and transactions.
+    /// 工作单元截断器
     /// </summary>
     internal class UnitOfWorkInterceptor : IInterceptor
     {
@@ -22,6 +22,7 @@ namespace Abp.Domain.Uow
         /// <param name="invocation">Method invocation arguments</param>
         public void Intercept(IInvocation invocation)
         {
+            // 如果没有获取到方法的unitofwork属性，那么不截断直接执行
             var unitOfWorkAttr = UnitOfWorkAttribute.GetUnitOfWorkAttributeOrNull(invocation.MethodInvocationTarget);
             if (unitOfWorkAttr == null || unitOfWorkAttr.IsDisabled)
             {

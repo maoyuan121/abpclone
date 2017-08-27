@@ -4,7 +4,7 @@ using System.Linq;
 namespace Abp.Authorization
 {
     /// <summary>
-    /// Used to store and manipulate dictionary of permissions.
+    /// 权限字典
     /// </summary>
     internal class PermissionDictionary : Dictionary<string, Permission>
     {
@@ -20,7 +20,8 @@ namespace Abp.Authorization
         }
 
         /// <summary>
-        /// Adds a permission and it's all child permissions to dictionary.
+        /// 将一个权限和其子权限添加到字典中
+        /// 递归完成
         /// </summary>
         /// <param name="permission">Permission to be added</param>
         private void AddPermissionRecursively(Permission permission)

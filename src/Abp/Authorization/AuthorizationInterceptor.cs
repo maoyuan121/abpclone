@@ -1,9 +1,9 @@
 ﻿using Castle.DynamicProxy;
 
-namespace Abp.Authorization
+namespace Abp.Authorization 
 {
     /// <summary>
-    /// This class is used to intercept methods to make authorization if the method defined <see cref="AbpAuthorizeAttribute"/>.
+    /// 权限检查截断器
     /// </summary>
     public class AuthorizationInterceptor : IInterceptor
     {

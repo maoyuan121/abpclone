@@ -4,12 +4,12 @@ using Abp.Dependency;
 namespace Abp.Authorization
 {
     /// <summary>
-    /// Permission dependency context.
+    /// 依赖权限的上下文
     /// </summary>
     public interface IPermissionDependencyContext
     {
         /// <summary>
-        /// The user which requires permission. Can be null if no user.
+        /// 要验证的用户
         /// </summary>
         UserIdentifier User { get; }
 
@@ -25,7 +25,7 @@ namespace Abp.Authorization
         /// Gets the <see cref="IFeatureChecker"/>.
         /// </summary>
         /// <value>
-        /// The feature checker.
+        /// 权限检查器The feature checker.
         /// </value>
         IPermissionChecker PermissionChecker { get; }
     }

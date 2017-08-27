@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 namespace Abp.Authorization
 {
     /// <summary>
-    /// Null (and default) implementation of <see cref="IPermissionChecker"/>.
+    /// 权限检查的空实现<see cref="IPermissionChecker"/>.
     /// </summary>
     public sealed class NullPermissionChecker : IPermissionChecker
     {

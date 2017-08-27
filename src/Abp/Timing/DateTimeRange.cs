@@ -3,21 +3,24 @@
 namespace Abp.Timing
 {
     /// <summary>
-    /// A basic implementation of <see cref="IDateTimeRange"/> to store a date range.
+    /// 实现<see cref="IDateTimeRange"/>存储时间跨度
     /// </summary>
     [Serializable]
     public class DateTimeRange : IDateTimeRange
     {
         /// <summary>
-        /// Start time of the datetime range.
+        /// 开始日期
         /// </summary>
         public DateTime StartTime { get; set; }
 
         /// <summary>
-        /// End time of the datetime range.
+        /// 结束日期
         /// </summary>
         public DateTime EndTime { get; set; }
 
+        /// <summary>
+        /// 当前日期
+        /// </summary>
         private static DateTime Now { get { return Clock.Now; } }
 
         /// <summary>
@@ -50,7 +53,7 @@ namespace Abp.Timing
         }
 
         /// <summary>
-        /// Gets a date range represents yesterday.
+        /// 获取昨天的时间跨度
         /// </summary>
         public static DateTimeRange Yesterday
         {
@@ -62,7 +65,7 @@ namespace Abp.Timing
         }
 
         /// <summary>
-        /// Gets a date range represents today.
+        /// 获取今天的时间跨度
         /// </summary>
         public static DateTimeRange Today
         {
@@ -74,7 +77,7 @@ namespace Abp.Timing
         }
 
         /// <summary>
-        /// Gets a date range represents tomorrow.
+        /// 获取明天的时间跨度
         /// </summary>
         public static DateTimeRange Tomorrow
         {
@@ -86,7 +89,7 @@ namespace Abp.Timing
         }
 
         /// <summary>
-        /// Gets a date range represents the last month.
+        /// 获取上个月的时间跨度
         /// </summary>
         public static DateTimeRange LastMonth
         {
@@ -100,7 +103,7 @@ namespace Abp.Timing
         }
 
         /// <summary>
-        /// Gets a date range represents this month.
+        /// 获取当月的时间跨度
         /// </summary>
         public static DateTimeRange ThisMonth
         {
@@ -114,7 +117,7 @@ namespace Abp.Timing
         }
 
         /// <summary>
-        /// Gets a date range represents the next month.
+        /// 获取下个月的时间跨度
         /// </summary>
         public static DateTimeRange NextMonth
         {
@@ -129,7 +132,7 @@ namespace Abp.Timing
 
 
         /// <summary>
-        /// Gets a date range represents the last year.
+        /// 获取去年的时间跨度
         /// </summary>
         public static DateTimeRange LastYear
         {
@@ -141,7 +144,7 @@ namespace Abp.Timing
         }
 
         /// <summary>
-        /// Gets a date range represents this year.
+        /// 获取今年的时间跨度
         /// </summary>
         public static DateTimeRange ThisYear
         {
@@ -153,7 +156,7 @@ namespace Abp.Timing
         }
 
         /// <summary>
-        /// Gets a date range represents the next year.
+        /// 获取明年的时间跨度
         /// </summary>
         public static DateTimeRange NextYear
         {
@@ -166,7 +169,7 @@ namespace Abp.Timing
 
 
         /// <summary>
-        /// Gets a date range represents the last 30 days (30x24 hours) including today.
+        /// 获取最近30天的时间跨度
         /// </summary>
         public static DateTimeRange Last30Days
         {
@@ -178,7 +181,7 @@ namespace Abp.Timing
         }
 
         /// <summary>
-        /// Gets a date range represents the last 30 days excluding today.
+        /// 获取最近30天的时间跨度，不包含今天
         /// </summary>
         public static DateTimeRange Last30DaysExceptToday
         {
@@ -190,7 +193,7 @@ namespace Abp.Timing
         }
 
         /// <summary>
-        /// Gets a date range represents the last 7 days (7x24 hours) including today.
+        /// 获取最近7天的时间跨度
         /// </summary>
         public static DateTimeRange Last7Days
         {
@@ -202,7 +205,7 @@ namespace Abp.Timing
         }
 
         /// <summary>
-        /// Gets a date range represents the last 7 days excluding today.
+        /// 获取最近7天的时间跨度，不包含今天
         /// </summary>
         public static DateTimeRange Last7DaysExceptToday
         {

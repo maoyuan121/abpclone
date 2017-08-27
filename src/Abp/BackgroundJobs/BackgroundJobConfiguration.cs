@@ -2,6 +2,9 @@
 
 namespace Abp.BackgroundJobs
 {
+    /// <summary>
+    /// 后台工作的配置
+    /// </summary>
     internal class BackgroundJobConfiguration : IBackgroundJobConfiguration
     {
         public bool IsJobExecutionEnabled { get; set; }

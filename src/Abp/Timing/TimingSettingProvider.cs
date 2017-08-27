@@ -4,6 +4,9 @@ using Abp.Localization;
 
 namespace Abp.Timing
 {
+    /// <summary>
+    /// 时区配置定义提供者
+    /// </summary>
     public class TimingSettingProvider : SettingProvider
     {
         public override IEnumerable<SettingDefinition> GetSettingDefinitions(SettingDefinitionProviderContext context)

@@ -7,6 +7,9 @@ using Castle.DynamicProxy;
 
 namespace Abp.Auditing
 {
+    /// <summary>
+    /// 审计日志截断器
+    /// </summary>
     internal class AuditingInterceptor : IInterceptor
     {
         private readonly IAuditingHelper _auditingHelper;

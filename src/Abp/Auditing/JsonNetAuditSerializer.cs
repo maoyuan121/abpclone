@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace Abp.Auditing
 {
+    /// <summary>
+    /// 审计日志的序列化器
+    /// </summary>
     public class JsonNetAuditSerializer : IAuditSerializer, ITransientDependency
     {
         private readonly IAuditingConfiguration _configuration;

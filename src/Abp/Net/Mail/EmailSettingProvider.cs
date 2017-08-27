@@ -5,7 +5,7 @@ using Abp.Localization;
 namespace Abp.Net.Mail
 {
     /// <summary>
-    /// Defines settings to send emails.
+    /// Email配置定义提供者
     /// <see cref="EmailSettingNames"/> for all available configurations.
     /// </summary>
     internal class EmailSettingProvider : SettingProvider

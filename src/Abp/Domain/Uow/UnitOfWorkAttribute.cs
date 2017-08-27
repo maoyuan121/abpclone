@@ -6,10 +6,10 @@ using System.Transactions;
 namespace Abp.Domain.Uow
 {
     /// <summary>
-    /// This attribute is used to indicate that declaring method is atomic and should be considered as a unit of work.
-    /// A method that has this attribute is intercepted, a database connection is opened and a transaction is started before call the method.
-    /// At the end of method call, transaction is committed and all changes applied to the database if there is no exception,
-    /// otherwise it's rolled back. 
+    /// 用来标识一个方法是否是原子的，是否应该作为一个工作单元
+    /// 如果方法被这个attribute修饰了，那么会打开一个数据库连接，开始一个事务
+    /// 在方法的最后，会提交事务，保存所有的修改
+    /// 如果发生异常会回滚
     /// </summary>
     /// <remarks>
     /// This attribute has no effect if there is already a unit of work before calling this method, if so, it uses the same transaction.

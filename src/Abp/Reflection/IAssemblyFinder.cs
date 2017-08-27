@@ -4,8 +4,7 @@ using System.Reflection;
 namespace Abp.Reflection
 {
     /// <summary>
-    /// This interface is used to get assemblies in the application.
-    /// It may not return all assemblies, but those are related with modules.
+    /// 程序集查找器
     /// </summary>
     public interface IAssemblyFinder
     {

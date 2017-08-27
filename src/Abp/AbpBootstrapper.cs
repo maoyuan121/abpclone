@@ -11,8 +11,8 @@ using JetBrains.Annotations;
 namespace Abp
 {
     /// <summary>
-    /// This is the main class that is responsible to start entire ABP system.
-    /// Prepares dependency injection and registers core components needed for startup.
+    /// 这个是开始启动ABP系统的主要类
+    /// 为启动准备依赖注入，注册核心组件
     /// It must be instantiated and initialized (see <see cref="Initialize"/>) first in an application.
     /// </summary>
     public class AbpBootstrapper : IDisposable
@@ -113,10 +113,14 @@ namespace Abp
         }
 
         /// <summary>
-        /// Initializes the ABP system.
+        /// 初始化ABP系统
+        /// 解析ILogger
+        /// 初始化模块 
+        /// 启动模块
         /// </summary>
         public virtual void Initialize()
         {
+            // 解析ILogger
             ResolveLogger();
 
             try
@@ -138,6 +142,9 @@ namespace Abp
             }
         }
 
+        /// <summary>
+        /// 解析ILogger
+        /// </summary>
         private void ResolveLogger()
         {
             if (IocManager.IsRegistered<ILoggerFactory>())

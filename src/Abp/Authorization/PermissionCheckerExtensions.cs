@@ -9,12 +9,12 @@ using Abp.Threading;
 namespace Abp.Authorization
 {
     /// <summary>
-    /// Extension methods for <see cref="IPermissionChecker"/>
+    /// 权限检查器的扩展方法
     /// </summary>
     public static class PermissionCheckerExtensions
     {
         /// <summary>
-        /// Checks if current user is granted for a permission.
+        /// 检查当前用户是否有某个权限
         /// </summary>
         /// <param name="permissionChecker">Permission checker</param>
         /// <param name="permissionName">Name of the permission</param>
@@ -24,7 +24,7 @@ namespace Abp.Authorization
         }
 
         /// <summary>
-        /// Checks if a user is granted for a permission.
+        /// 检查指定用户是否有某个权限
         /// </summary>
         /// <param name="permissionChecker">Permission checker</param>
         /// <param name="user">User to check</param>
@@ -35,11 +35,11 @@ namespace Abp.Authorization
         }
 
         /// <summary>
-        /// Checks if given user is granted for given permission.
+        /// 检查指定用户是否有权限
         /// </summary>
         /// <param name="permissionChecker">Permission checker</param>
-        /// <param name="user">User</param>
-        /// <param name="requiresAll">True, to require all given permissions are granted. False, to require one or more.</param>
+        /// <param name="user">被检查的用户</param>
+        /// <param name="requiresAll">设为True，表示需要有所有的权限。False，表示只要有其中一个权限即可</param>
         /// <param name="permissionNames">Name of the permissions</param>
         public static bool IsGranted(this IPermissionChecker permissionChecker, UserIdentifier user, bool requiresAll, params string[] permissionNames)
         {
@@ -47,11 +47,11 @@ namespace Abp.Authorization
         }
 
         /// <summary>
-        /// Checks if given user is granted for given permission.
+        /// 检查指定用户是否有权限
         /// </summary>
         /// <param name="permissionChecker">Permission checker</param>
-        /// <param name="user">User</param>
-        /// <param name="requiresAll">True, to require all given permissions are granted. False, to require one or more.</param>
+        /// <param name="user">被检查的用户</param>
+        /// <param name="requiresAll">设为True，表示需要有所有的权限。False，表示只要有其中一个权限即可</param>
         /// <param name="permissionNames">Name of the permissions</param>
         public static async Task<bool> IsGrantedAsync(this IPermissionChecker permissionChecker, UserIdentifier user, bool requiresAll, params string[] permissionNames)
         {
@@ -87,7 +87,7 @@ namespace Abp.Authorization
         }
 
         /// <summary>
-        /// Checks if current user is granted for given permission.
+        /// 检查当前用户是否有权限
         /// </summary>
         /// <param name="permissionChecker">Permission checker</param>
         /// <param name="requiresAll">True, to require all given permissions are granted. False, to require one or more.</param>
@@ -137,9 +137,8 @@ namespace Abp.Authorization
         }
 
         /// <summary>
-        /// Authorizes current user for given permission or permissions,
-        /// throws <see cref="AbpAuthorizationException"/> if not authorized.
-        /// User it authorized if any of the <see cref="permissionNames"/> are granted.
+        /// 验证当前用户是否有权限
+        /// 如果没有权限就抛出 <see cref="AbpAuthorizationException"/>异常
         /// </summary>
         /// <param name="permissionChecker">Permission checker</param>
         /// <param name="permissionNames">Name of the permissions to authorize</param>
@@ -150,9 +149,8 @@ namespace Abp.Authorization
         }
 
         /// <summary>
-        /// Authorizes current user for given permission or permissions,
-        /// throws <see cref="AbpAuthorizationException"/> if not authorized.
-        /// User it authorized if any of the <see cref="permissionNames"/> are granted.
+        /// 验证当前用户是否有权限
+        /// 如果没有权限就抛出 <see cref="AbpAuthorizationException"/>异常
         /// </summary>
         /// <param name="permissionChecker">Permission checker</param>
         /// <param name="requireAll">
@@ -167,9 +165,8 @@ namespace Abp.Authorization
         }
 
         /// <summary>
-        /// Authorizes current user for given permission or permissions,
-        /// throws <see cref="AbpAuthorizationException"/> if not authorized.
-        /// User it authorized if any of the <see cref="permissionNames"/> are granted.
+        /// 验证当前用户是否有权限
+        /// 如果没有权限就抛出 <see cref="AbpAuthorizationException"/>异常
         /// </summary>
         /// <param name="permissionChecker">Permission checker</param>
         /// <param name="permissionNames">Name of the permissions to authorize</param>
@@ -180,8 +177,8 @@ namespace Abp.Authorization
         }
 
         /// <summary>
-        /// Authorizes current user for given permission or permissions,
-        /// throws <see cref="AbpAuthorizationException"/> if not authorized.
+        /// 验证当前用户是否有权限
+        /// 如果没有权限就抛出 <see cref="AbpAuthorizationException"/>异常
         /// </summary>
         /// <param name="permissionChecker">Permission checker</param>
         /// <param name="requireAll">

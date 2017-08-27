@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace Abp.Configuration
 {
     /// <summary>
-    /// This interface is used to get/set settings from/to a data source (database).
+    /// 这个接口用来从一个数据源(数据库)中来获取或者持续化配置
     /// </summary>
     public interface ISettingStore
     {

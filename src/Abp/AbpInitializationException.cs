@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Abp
 {
     /// <summary>
-    /// This exception is thrown if a problem on ABP initialization progress.
+    /// 日过在ABP的初始化过程中发生异常，那么抛出这个一场
     /// </summary>
     [Serializable]
     public class AbpInitializationException : AbpException

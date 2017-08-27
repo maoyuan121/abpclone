@@ -15,7 +15,7 @@ namespace Abp.Runtime.Caching
     {
         protected readonly IIocManager IocManager;
 
-        protected readonly ICachingConfiguration Configuration;
+        protected readonly ICachingConfiguration Configuration; 
 
         protected readonly ConcurrentDictionary<string, ICache> Caches;
 

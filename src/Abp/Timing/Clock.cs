@@ -3,7 +3,9 @@ using System;
 namespace Abp.Timing
 {
     /// <summary>
-    /// Used to perform some common date-time operations.
+    /// 使用该类执行一些通用的日期操作
+    /// 该类引用<see cref="IClockProvider"/>来实现通用的日期操作
+    /// 默认的<see cref="IClockProvider"/>是UnspecifiedClockProvider
     /// </summary>
     public static class Clock
     {

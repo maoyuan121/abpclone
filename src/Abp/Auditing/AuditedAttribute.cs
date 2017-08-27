@@ -3,8 +3,7 @@
 namespace Abp.Auditing
 {
     /// <summary>
-    /// This attribute is used to apply audit logging for a single method or
-    /// all methods of a class or interface.
+    /// 标识一个方法或者一个类需要添加审计日志
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AuditedAttribute : Attribute

@@ -6,12 +6,12 @@ using Nito.AsyncEx;
 namespace Abp.Threading
 {
     /// <summary>
-    /// Provides some helper methods to work with async methods.
+    /// 异步方法帮助类
     /// </summary>
     public static class AsyncHelper
     {
         /// <summary>
-        /// Checks if given method is an async method.
+        /// 检查方法是否是异步方法
         /// </summary>
         /// <param name="method">A method to check</param>
         public static bool IsAsyncMethod(MethodInfo method)
@@ -23,7 +23,7 @@ namespace Abp.Threading
         }
 
         /// <summary>
-        /// Runs a async method synchronously.
+        /// 以同步的方式运行一个异步方法
         /// </summary>
         /// <param name="func">A function that returns a result</param>
         /// <typeparam name="TResult">Result type</typeparam>
@@ -34,7 +34,7 @@ namespace Abp.Threading
         }
 
         /// <summary>
-        /// Runs a async method synchronously.
+        /// 以同步的方式运行一个一部方法
         /// </summary>
         /// <param name="action">An async action</param>
         public static void RunSync(Func<Task> action)

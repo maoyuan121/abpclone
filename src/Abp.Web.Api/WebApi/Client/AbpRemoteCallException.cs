@@ -5,7 +5,7 @@ using Abp.Web.Models;
 namespace Abp.WebApi.Client
 {
     /// <summary>
-    /// This exception is thrown when a remote method call made and remote application sent an error message.
+    /// 远程服务调用的异常This exception is thrown when a remote method call made and remote application sent an error message.
     /// </summary>
     [Serializable]
     public class AbpRemoteCallException : AbpException

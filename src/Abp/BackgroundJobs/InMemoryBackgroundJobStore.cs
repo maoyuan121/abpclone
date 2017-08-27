@@ -7,9 +7,7 @@ using Abp.Timing;
 namespace Abp.BackgroundJobs
 {
     /// <summary>
-    /// In memory implementation of <see cref="IBackgroundJobStore"/>.
-    /// It's used if <see cref="IBackgroundJobStore"/> is not implemented by actual persistent store
-    /// and job execution is enabled (<see cref="IBackgroundJobConfiguration.IsJobExecutionEnabled"/>) for the application.
+    /// 存储器的内存实现
     /// </summary>
     public class InMemoryBackgroundJobStore : IBackgroundJobStore
     {

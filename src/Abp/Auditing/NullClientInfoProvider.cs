@@ -1,5 +1,8 @@
 ﻿namespace Abp.Auditing
 {
+    /// <summary>
+    /// 客户端信息提供器的空实现对象
+    /// </summary>
     public class NullClientInfoProvider : IClientInfoProvider
     {
         public static NullClientInfoProvider Instance { get; } = new NullClientInfoProvider();

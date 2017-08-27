@@ -4,6 +4,10 @@ using AutoMapper;
 
 namespace Abp.AutoMapper
 {
+    /// <summary>
+    /// AutoMapAttibute
+    /// 为被修饰的类和制定的类的相互转换CreateMap
+    /// </summary>
     public class AutoMapAttribute : AutoMapAttributeBase
     {
         public AutoMapAttribute(params Type[] targetTypes)

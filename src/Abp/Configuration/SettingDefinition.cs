@@ -4,57 +4,57 @@ using Abp.Localization;
 namespace Abp.Configuration
 {
     /// <summary>
-    /// Defines a setting.
+    /// 定义一个配置
     /// A setting is used to configure and change behavior of the application.
     /// </summary>
     public class SettingDefinition
     {
         /// <summary>
-        /// Unique name of the setting.
+        /// 配置的唯一名
         /// </summary>
         public string Name { get; private set; }
 
         /// <summary>
-        /// Display name of the setting.
-        /// This can be used to show setting to the user.
+        /// 配置的对外展示名
         /// </summary>
         public ILocalizableString DisplayName { get; set; }
 
         /// <summary>
-        /// A brief description for this setting.
+        /// 配置的描述
         /// </summary>
         public ILocalizableString Description { get; set; }
 
         /// <summary>
-        /// Scopes of this setting.
+        /// 配置的作用范围
         /// Default value: <see cref="SettingScopes.Application"/>.
         /// </summary>
         public SettingScopes Scopes { get; set; }
 
         /// <summary>
-        /// Is this setting inherited from parent scopes.
+        /// 是否继承自父范围级别
         /// Default: True.
         /// </summary>
         public bool IsInherited { get; set; }
 
         /// <summary>
-        /// Gets/sets group for this setting.
+        /// 配置所属的分组
         /// </summary>
         public SettingDefinitionGroup Group { get; set; }
 
         /// <summary>
-        /// Default value of the setting.
+        /// 配置的默认值
         /// </summary>
         public string DefaultValue { get; set; }
 
         /// <summary>
-        /// Can clients see this setting and it's value.
-        /// It maybe dangerous for some settings to be visible to clients (such as email server password).
-        /// Default: false.
+        /// 配置是否对外可见
+        /// 有些配置对外展示可能会带来风险（例如Email服务器的密码）
+        /// 默认: false.
         /// </summary>
         public bool IsVisibleToClients { get; set; }
 
         /// <summary>
+        /// 用来存储和这个配置相关的用户对象
         /// Can be used to store a custom object related to this setting.
         /// </summary>
         public object CustomData { get; set; }

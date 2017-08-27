@@ -3,7 +3,7 @@
 namespace Abp.Auditing
 {
     /// <summary>
-    /// This informations are collected for an <see cref="AuditedAttribute"/> method.
+    /// 审计日志
     /// </summary>
     public class AuditInfo
     {

@@ -4,6 +4,10 @@ using Abp.MultiTenancy;
 
 namespace Abp.Web.MultiTenancy
 {
+    /// <summary>
+    /// 实现租户解析器Cache
+    /// 用HttpContext实现
+    /// </summary>
     public class HttpContextTenantResolverCache : ITenantResolverCache, ITransientDependency
     {
         private const string CacheItemKey = "Abp.MultiTenancy.TenantResolverCacheItem";

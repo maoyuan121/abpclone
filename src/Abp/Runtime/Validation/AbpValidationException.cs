@@ -7,7 +7,8 @@ using Abp.Logging;
 namespace Abp.Runtime.Validation
 {
     /// <summary>
-    /// This exception type is used to throws validation exceptions.
+    /// 这个异常用来抛出验证异常
+    /// 日志级别默认为警告
     /// </summary>
     [Serializable]
     public class AbpValidationException : AbpException, IHasLogSeverity

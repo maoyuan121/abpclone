@@ -1,30 +1,29 @@
 namespace Abp.Localization
 {
     /// <summary>
-    /// Represents an available language for the application.
+    /// 表示应用可以使用的语言
     /// </summary>
     public class LanguageInfo
     {
         /// <summary>
-        /// Code name of the language.
-        /// It should be valid culture code.
+        /// 语言的Code名
+        /// 必须是合法的文化code
         /// Ex: "en-US" for American English, "tr-TR" for Turkey Turkish.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Display name of the language in it's original language.
-        /// Ex: "English" for English, "T黵k鏴" for Turkish.
+        /// 对外展示名
         /// </summary>
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// An icon can be set to display on the UI.
+        /// 显示在UI上面的ICON
         /// </summary>
         public string Icon { get; set; }
 
         /// <summary>
-        /// Is this the default language?
+        /// 是否是默认语言
         /// </summary>
         public bool IsDefault { get; set; }
 

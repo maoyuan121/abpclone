@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 namespace Abp.BackgroundJobs
 {
     /// <summary>
-    /// Defines interface to store/get background jobs.
+    /// 后台工作存储器
     /// </summary>
     public interface IBackgroundJobStore
     {
         /// <summary>
-        /// Inserts a background job.
+        /// 插入一个工作信息
         /// </summary>
         /// <param name="jobInfo">Job information.</param>
         Task InsertAsync(BackgroundJobInfo jobInfo);
@@ -24,13 +24,13 @@ namespace Abp.BackgroundJobs
         Task<List<BackgroundJobInfo>> GetWaitingJobsAsync(int maxResultCount);
 
         /// <summary>
-        /// Deletes a job.
+        /// 删除一个工作
         /// </summary>
         /// <param name="jobInfo">Job information.</param>
         Task DeleteAsync(BackgroundJobInfo jobInfo);
 
         /// <summary>
-        /// Updates a job.
+        /// 更新一个工作
         /// </summary>
         /// <param name="jobInfo">Job information.</param>
         Task UpdateAsync(BackgroundJobInfo jobInfo);

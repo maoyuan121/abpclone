@@ -6,29 +6,28 @@ using Abp.Localization;
 namespace Abp.Configuration
 {
     /// <summary>
-    /// A setting group is used to group some settings togehter.
-    /// A group can be child of another group and can have child groups.
+    /// 配置的分组，用来将配置划分为一个一个的组
+    /// 一个组可以是另外一个组的子组
     /// </summary>
     public class SettingDefinitionGroup
     {
         /// <summary>
-        /// Unique name of the setting group.
+        /// 配置组的唯一名
         /// </summary>
         public string Name { get; private set; }
 
         /// <summary>
-        /// Display name of the setting.
-        /// This can be used to show setting to the user.
+        /// 配置组的对外展示名
         /// </summary>
         public ILocalizableString DisplayName { get; private set; }
 
         /// <summary>
-        /// Gets parent of this group.
+        /// 父组
         /// </summary>
         public SettingDefinitionGroup Parent { get; private set; }
 
         /// <summary>
-        /// Gets a list of all children of this group.
+        /// 子组集合
         /// </summary>
         public IReadOnlyList<SettingDefinitionGroup> Children
         {

@@ -4,32 +4,30 @@ using Abp.MultiTenancy;
 namespace Abp.Authorization
 {
     /// <summary>
-    /// Permission manager.
+    /// 权限管理器
     /// </summary>
     public interface IPermissionManager
     {
         /// <summary>
-        /// Gets <see cref="Permission"/> object with given <paramref name="name"/> or throws exception
-        /// if there is no permission with given <paramref name="name"/>.
+        /// 根据<paramref name="name"/>获取权限，如果没找到就抛出异常
         /// </summary>
         /// <param name="name">Unique name of the permission</param>
         Permission GetPermission(string name);
 
         /// <summary>
-        /// Gets <see cref="Permission"/> object with given <paramref name="name"/> or returns null
-        /// if there is no permission with given <paramref name="name"/>.
+        /// 根据<paramref name="name"/>获取权限，如果没找到就返回NULL
         /// </summary>
         /// <param name="name">Unique name of the permission</param>
         Permission GetPermissionOrNull(string name);
 
         /// <summary>
-        /// Gets all permissions.
+        /// 获取所有权限
         /// </summary>
-        /// <param name="tenancyFilter">Can be passed false to disable tenancy filter.</param>
+        /// <param name="tenancyFilter">用来标识是否启用/禁用tenancy数据过滤器</param>
         IReadOnlyList<Permission> GetAllPermissions(bool tenancyFilter = true);
 
         /// <summary>
-        /// Gets all permissions.
+        /// 获取所有权限（租户的，Host的，或者租户和Host的）
         /// </summary>
         /// <param name="multiTenancySides">Multi-tenancy side to filter</param>
         IReadOnlyList<Permission> GetAllPermissions(MultiTenancySides multiTenancySides);

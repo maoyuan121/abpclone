@@ -8,7 +8,7 @@ using Castle.Core.Logging;
 namespace Abp.Logging
 {
     /// <summary>
-    /// This class can be used to write logs from somewhere where it's a hard to get a reference to the <see cref="ILogger"/>.
+    /// 日志帮助类，用来写日志
     /// Normally, use <see cref="ILogger"/> with property injection wherever it's possible.
     /// </summary>
     public static class LogHelper
@@ -25,11 +25,20 @@ namespace Abp.Logging
                 : NullLogger.Instance;
         }
 
+        /// <summary>
+        /// 记录异常日志
+        /// </summary>
+        /// <param name="ex"></param>
         public static void LogException(Exception ex)
         {
             LogException(Logger, ex);
         }
 
+        /// <summary>
+        /// 记录异常日志
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="ex"></param>
         public static void LogException(ILogger logger, Exception ex)
         {
             var severity = (ex as IHasLogSeverity)?.Severity ?? LogSeverity.Error;
@@ -39,6 +48,11 @@ namespace Abp.Logging
             LogValidationErrors(logger, ex);
         }
 
+        /// <summary>
+        /// 记录验证异常日志
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="exception"></param>
         private static void LogValidationErrors(ILogger logger, Exception exception)
         {
             //Try to find inner validation exception

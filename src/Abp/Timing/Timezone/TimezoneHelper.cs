@@ -12,7 +12,7 @@ using Abp.Xml.Extensions;
 namespace Abp.Timing.Timezone
 {
     /// <summary>
-    /// A helper class for timezone operations
+    /// 多时区帮助类
     /// </summary>
     public static class TimezoneHelper
     {

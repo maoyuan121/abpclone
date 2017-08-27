@@ -6,7 +6,8 @@ using Abp.Logging;
 namespace Abp.Configuration
 {
     /// <summary>
-    /// Implements default behavior for ISettingStore.
+    /// 实现ISeetingStore
+    /// 通过Config文件，因此只能看，不能改
     /// Only <see cref="GetSettingOrNullAsync"/> method is implemented and it gets setting's value
     /// from application's configuration file if exists, or returns null if not.
     /// </summary>

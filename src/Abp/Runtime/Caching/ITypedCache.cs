@@ -10,7 +10,7 @@ namespace Abp.Runtime.Caching
     /// </summary>
     /// <typeparam name="TKey">Key type for cache items</typeparam>
     /// <typeparam name="TValue">Value type for cache items</typeparam>
-    public interface ITypedCache<TKey, TValue> : IDisposable
+    public interface ITypedCache<TKey, TValue> : IDisposable 
     {
         /// <summary>
         /// Unique name of the cache.

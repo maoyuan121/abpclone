@@ -7,7 +7,7 @@ using Castle.MicroKernel;
 namespace Abp.Domain.Uow
 {
     /// <summary>
-    /// This class is used to register interceptor for needed classes for Unit Of Work mechanism.
+    /// uow½Ø¶ÏÆ÷×¢²áÆ÷
     /// </summary>
     internal static class UnitOfWorkRegistrar
     {

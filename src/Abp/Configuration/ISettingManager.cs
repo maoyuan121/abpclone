@@ -5,36 +5,36 @@ using System.Threading.Tasks;
 namespace Abp.Configuration
 {
     /// <summary>
-    /// This is the main interface that must be implemented to be able to load/change values of settings.
+    /// 加载，修改配置的接口
     /// </summary>
     public interface ISettingManager
     {
         /// <summary>
-        /// Gets current value of a setting.
+        /// 获取配置值
         /// It gets the setting value, overwritten by application, current tenant and current user if exists.
         /// </summary>
-        /// <param name="name">Unique name of the setting</param>
+        /// <param name="name">配置的唯一名</param>
         /// <returns>Current value of the setting</returns>
         Task<string> GetSettingValueAsync(string name);
 
         /// <summary>
-        /// Gets current value of a setting for the application level.
+        /// 获取应用级别的配置值
         /// </summary>
-        /// <param name="name">Unique name of the setting</param>
+        /// <param name="name">配置的唯一名</param>
         /// <returns>Current value of the setting for the application</returns>
         Task<string> GetSettingValueForApplicationAsync(string name);
 
         /// <summary>
-        /// Gets current value of a setting for a tenant level.
+        /// 获取租户级别的配置值
         /// It gets the setting value, overwritten by given tenant.
         /// </summary>
-        /// <param name="name">Unique name of the setting</param>
+        /// <param name="name">配置的唯一名</param>
         /// <param name="tenantId">Tenant id</param>
         /// <returns>Current value of the setting</returns>
         Task<string> GetSettingValueForTenantAsync(string name, int tenantId);
 
         /// <summary>
-        /// Gets current value of a setting for a user level.
+        /// 获取用户级别的配置值
         /// It gets the setting value, overwritten by given tenant and user.
         /// </summary>
         /// <param name="name">Unique name of the setting</param>
@@ -44,14 +44,14 @@ namespace Abp.Configuration
         Task<string> GetSettingValueForUserAsync(string name, int? tenantId, long userId); //TODO: Can be overloaded for UserIdentifier.
 
         /// <summary>
-        /// Gets current values of all settings.
+        /// 获取所有的配置值
         /// It gets all setting values, overwritten by application, current tenant (if exists) and the current user (if exists).
         /// </summary>
         /// <returns>List of setting values</returns>
         Task<IReadOnlyList<ISettingValue>> GetAllSettingValuesAsync();
 
         /// <summary>
-        /// Gets current values of all settings.
+        /// 获取指定Scope的所有配置值
         /// It gets default values of all settings then overwrites by given scopes.
         /// </summary>
         /// <param name="scopes">One or more scope to overwrite</param>
@@ -59,7 +59,7 @@ namespace Abp.Configuration
         Task<IReadOnlyList<ISettingValue>> GetAllSettingValuesAsync(SettingScopes scopes);
 
         /// <summary>
-        /// Gets a list of all setting values specified for the application.
+        /// 获取应用级别所有的配置值
         /// It returns only settings those are explicitly set for the application.
         /// If a setting's default value is used, it's not included the result list.
         /// If you want to get current values of all settings, use <see cref="GetAllSettingValuesAsync()"/> method.
@@ -68,7 +68,7 @@ namespace Abp.Configuration
         Task<IReadOnlyList<ISettingValue>> GetAllSettingValuesForApplicationAsync();
 
         /// <summary>
-        /// Gets a list of all setting values specified for a tenant.
+        /// 获取租户级别所有的配置值
         /// It returns only settings those are explicitly set for the tenant.
         /// If a setting's default value is used, it's not included the result list.
         /// If you want to get current values of all settings, use <see cref="GetAllSettingValuesAsync()"/> method.
@@ -78,7 +78,7 @@ namespace Abp.Configuration
         Task<IReadOnlyList<ISettingValue>> GetAllSettingValuesForTenantAsync(int tenantId);
 
         /// <summary>
-        /// Gets a list of all setting values specified for a user.
+        /// 获取用户级别所有的配置值
         /// It returns only settings those are explicitly set for the user.
         /// If a setting's value is not set for the user (for example if user uses the default value), it's not included the result list.
         /// If you want to get current values of all settings, use <see cref="GetAllSettingValuesAsync()"/> method.
@@ -88,14 +88,14 @@ namespace Abp.Configuration
         Task<IReadOnlyList<ISettingValue>> GetAllSettingValuesForUserAsync(UserIdentifier user);
 
         /// <summary>
-        /// Changes setting for the application level.
+        /// 修改应用级别的配置值
         /// </summary>
         /// <param name="name">Unique name of the setting</param>
         /// <param name="value">Value of the setting</param>
         Task ChangeSettingForApplicationAsync(string name, string value);
 
         /// <summary>
-        /// Changes setting for a Tenant.
+        /// 修改租户级别的配置值
         /// </summary>
         /// <param name="tenantId">TenantId</param>
         /// <param name="name">Unique name of the setting</param>
@@ -103,7 +103,7 @@ namespace Abp.Configuration
         Task ChangeSettingForTenantAsync(int tenantId, string name, string value);
 
         /// <summary>
-        /// Changes setting for a user.
+        /// 修改用户级别的配置值
         /// </summary>
         /// <param name="user">UserId</param>
         /// <param name="name">Unique name of the setting</param>

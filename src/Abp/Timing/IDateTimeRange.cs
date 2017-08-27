@@ -3,7 +3,7 @@
 namespace Abp.Timing
 {
     /// <summary>
-    /// Defines interface for a DateTime range.
+    /// 接口，定义了时间跨度
     /// </summary>
     public interface IDateTimeRange
     {

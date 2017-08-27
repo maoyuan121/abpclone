@@ -5,12 +5,12 @@ using System.Transactions;
 namespace Abp.Domain.Uow
 {
     /// <summary>
-    /// Used to get/set default options for a unit of work.
+    /// 获取/设置uow的默认配置
     /// </summary>
     public interface IUnitOfWorkDefaultOptions
     {
         /// <summary>
-        /// Scope option.
+        /// 事务范围
         /// </summary>
         TransactionScopeOption Scope { get; set; }
 
@@ -21,30 +21,30 @@ namespace Abp.Domain.Uow
         bool IsTransactional { get; set; }
 
         /// <summary>
-        /// Gets/sets a timeout value for unit of works.
+        /// 设置超时时间
         /// </summary>
         TimeSpan? Timeout { get; set; }
 
         /// <summary>
-        /// Gets/sets isolation level of transaction.
+        /// 事务隔离级别
         /// This is used if <see cref="IsTransactional"/> is true.
         /// </summary>
         IsolationLevel? IsolationLevel { get; set; }
 
         /// <summary>
-        /// Gets list of all data filter configurations.
+        /// 过滤器的配置文件集合
         /// </summary>
         IReadOnlyList<DataFilterConfiguration> Filters { get; }
 
         /// <summary>
-        /// Registers a data filter to unit of work system.
+        /// 注册过滤器到uow
         /// </summary>
         /// <param name="filterName">Name of the filter.</param>
         /// <param name="isEnabledByDefault">Is filter enabled by default.</param>
         void RegisterFilter(string filterName, bool isEnabledByDefault);
 
         /// <summary>
-        /// Overrides a data filter definition.
+        /// 覆盖一个过滤器的配置
         /// </summary>
         /// <param name="filterName">Name of the filter.</param>
         /// <param name="isEnabledByDefault">Is filter enabled by default.</param>

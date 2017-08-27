@@ -1,7 +1,7 @@
 ﻿namespace Abp.BackgroundJobs
 {
     /// <summary>
-    /// Defines interface of a background job.
+    /// 后台工作的接口
     /// </summary>
     public interface IBackgroundJob<in TArgs>
     {

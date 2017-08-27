@@ -5,7 +5,8 @@ using Abp.Logging;
 namespace Abp.Authorization
 {
     /// <summary>
-    /// This exception is thrown on an unauthorized request.
+    /// 权限验证异常，发生在权限验证失败的收
+    /// 日志级别默认为警告
     /// </summary>
     [Serializable]
     public class AbpAuthorizationException : AbpException, IHasLogSeverity

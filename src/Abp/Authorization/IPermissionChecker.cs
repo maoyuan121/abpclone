@@ -3,18 +3,18 @@ using System.Threading.Tasks;
 namespace Abp.Authorization
 {
     /// <summary>
-    /// This class is used to permissions for users.
+    /// 检查用户权限
     /// </summary>
     public interface IPermissionChecker
     {
         /// <summary>
-        /// Checks if current user is granted for a permission.
+        /// 检查用户是否被授予了一个权限
         /// </summary>
         /// <param name="permissionName">Name of the permission</param>
         Task<bool> IsGrantedAsync(string permissionName);
 
         /// <summary>
-        /// Checks if a user is granted for a permission.
+        /// 检查指定用户是否被授予了一个权限
         /// </summary>
         /// <param name="user">User to check</param>
         /// <param name="permissionName">Name of the permission</param>

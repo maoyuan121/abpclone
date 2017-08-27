@@ -7,7 +7,8 @@ using Abp.Dependency;
 namespace Abp.Configuration
 {
     /// <summary>
-    /// Implements <see cref="ISettingDefinitionManager"/>.
+    /// 配置定义管理器，实现<see cref="ISettingDefinitionManager"/>.
+    /// 用来获取配置定义
     /// </summary>
     internal class SettingDefinitionManager : ISettingDefinitionManager, ISingletonDependency
     {

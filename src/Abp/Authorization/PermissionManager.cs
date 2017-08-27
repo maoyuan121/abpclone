@@ -11,7 +11,7 @@ using Abp.Runtime.Session;
 namespace Abp.Authorization
 {
     /// <summary>
-    /// Permission manager.
+    /// 权限管理器
     /// </summary>
     internal class PermissionManager : PermissionDefinitionContextBase, IPermissionManager, ISingletonDependency
     {

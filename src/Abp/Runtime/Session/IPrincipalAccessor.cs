@@ -4,6 +4,6 @@ namespace Abp.Runtime.Session
 {
     public interface IPrincipalAccessor
     {
-        ClaimsPrincipal Principal { get; }
+        ClaimsPrincipal Principal { get; } 
     }
 }

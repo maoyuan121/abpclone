@@ -1,7 +1,7 @@
 namespace Abp.Logging
 {
     /// <summary>
-    /// Interface to define a <see cref="Severity"/> property (see <see cref="LogSeverity"/>).
+    /// 实现该接口的类有一个日志级别属性
     /// </summary>
     public interface IHasLogSeverity
     {

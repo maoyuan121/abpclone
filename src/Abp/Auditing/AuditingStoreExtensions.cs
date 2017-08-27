@@ -3,12 +3,12 @@
 namespace Abp.Auditing
 {
     /// <summary>
-    /// Extension methods for <see cref="IAuditingStore"/>.
+    /// 扩展<see cref="IAuditingStore"/>
     /// </summary>
     public static class AuditingStoreExtensions
     {
         /// <summary>
-        /// Should save audits to a persistent store.
+        /// 以同步的方式保存审计日志
         /// </summary>
         /// <param name="auditingStore">Auditing store</param>
         /// <param name="auditInfo">Audit informations</param>

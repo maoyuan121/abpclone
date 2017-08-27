@@ -37,7 +37,7 @@ namespace Abp.Runtime.Remoting
             }
             return item.Value;
         }
-
+        
         public IDisposable BeginScope(string contextKey, T value)
         {
             var item = new ScopeItem(value, GetCurrentItem(contextKey));

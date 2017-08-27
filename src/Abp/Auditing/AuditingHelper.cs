@@ -13,6 +13,9 @@ using Castle.Core.Logging;
 
 namespace Abp.Auditing
 {
+    /// <summary>
+    /// 审计帮助类
+    /// </summary>
     public class AuditingHelper : IAuditingHelper, ITransientDependency
     {
         public ILogger Logger { get; set; }
@@ -40,13 +43,21 @@ namespace Abp.Auditing
             AuditingStore = SimpleLogAuditingStore.Instance;
         }
 
+        /// <summary>
+        /// 是否应该保存审计日志
+        /// </summary>
+        /// <param name="methodInfo"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
         public bool ShouldSaveAudit(MethodInfo methodInfo, bool defaultValue = false)
         {
+            // 如果没有启用审计功能，那么不保存
             if (!_configuration.IsEnabled)
             {
                 return false;
             }
 
+            // 如果用户是匿名用户，且未启用为匿名用户记录审计日志，那么不保存
             if (!_configuration.IsEnabledForAnonymousUsers && (AbpSession?.UserId == null))
             {
                 return false;
@@ -57,16 +68,19 @@ namespace Abp.Auditing
                 return false;
             }
 
+            // 不是公共方法，那么不保存
             if (!methodInfo.IsPublic)
             {
                 return false;
             }
 
+            // 如果方法用AuditedAttribute修饰了，那么保存
             if (methodInfo.IsDefined(typeof(AuditedAttribute), true))
             {
                 return true;
             }
 
+            // 如果方法用DisableAuditingAttribute修饰了，那么不保存
             if (methodInfo.IsDefined(typeof(DisableAuditingAttribute), true))
             {
                 return false;
@@ -75,16 +89,19 @@ namespace Abp.Auditing
             var classType = methodInfo.DeclaringType;
             if (classType != null)
             {
+                // 如果类用AuditedAttribute，那么启用
                 if (classType.IsDefined(typeof(AuditedAttribute), true))
                 {
                     return true;
                 }
 
+                // 如果类用DisableAuditingAttribute修饰了，那么不启用
                 if (classType.IsDefined(typeof(DisableAuditingAttribute), true))
                 {
                     return false;
                 }
 
+                // 如果类在配置文件的Selectors里面，那么启用
                 if (_configuration.Selectors.Any(selector => selector.Predicate(classType)))
                 {
                     return true;

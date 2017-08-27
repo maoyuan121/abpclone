@@ -4,7 +4,7 @@ using Castle.Core.Logging;
 namespace Abp.Logging
 {
     /// <summary>
-    /// Extensions for <see cref="ILogger"/>.
+    /// <see cref="ILogger"/>的扩展方法
     /// </summary>
     public static class LoggerExtensions
     {

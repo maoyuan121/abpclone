@@ -3,12 +3,12 @@
 namespace Abp.Timing.Timezone
 {
     /// <summary>
-    /// Interface for timezone converter
+    /// 时区转换接口
     /// </summary>
     public interface ITimeZoneConverter
     {
         /// <summary>
-        /// Converts given date to user's time zone. 
+        /// 接受一个时间，将其转换为用户时区的时间
         /// If timezone setting is not specified, returns given date.
         /// </summary>
         /// <param name="date">Base date to convert</param>
@@ -18,7 +18,7 @@ namespace Abp.Timing.Timezone
         DateTime? Convert(DateTime? date, int? tenantId, long userId);
 
         /// <summary>
-        /// Converts given date to tenant's time zone. 
+        /// 接受一个时间，将其转换为租户时区的时间
         /// If timezone setting is not specified, returns given date.
         /// </summary>
         /// <param name="date">Base date to convert</param>
@@ -27,7 +27,7 @@ namespace Abp.Timing.Timezone
         DateTime? Convert(DateTime? date, int tenantId);
 
         /// <summary>
-        /// Converts given date to application's time zone. 
+        /// 接受一个时间，将其转换为应用时区的时间
         /// If timezone setting is not specified, returns given date.
         /// </summary>
         /// <param name="date">Base date to convert</param>

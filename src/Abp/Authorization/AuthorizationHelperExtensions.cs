@@ -5,6 +5,9 @@ using Abp.Threading;
 
 namespace Abp.Authorization
 {
+    /// <summary>
+    /// 权限帮助类的扩展
+    /// </summary>
     public static class AuthorizationHelperExtensions
     {
         public static async Task AuthorizeAsync(this IAuthorizationHelper authorizationHelper, IAbpAuthorizeAttribute authorizeAttribute)

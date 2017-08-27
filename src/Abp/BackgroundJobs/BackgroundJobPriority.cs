@@ -1,7 +1,7 @@
 ﻿namespace Abp.BackgroundJobs
 {
     /// <summary>
-    /// Priority of a background job.
+    /// 后台工作的优先级别
     /// </summary>
     public enum BackgroundJobPriority : byte
     {

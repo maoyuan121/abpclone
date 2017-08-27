@@ -3,12 +3,12 @@
 namespace Abp.Authorization
 {
     /// <summary>
-    /// Defines interface to check a dependency.
+    /// 依赖权限
     /// </summary>
     public interface IPermissionDependency
     {
         /// <summary>
-        /// Checks if permission dependency is satisfied.
+        /// 检查是否满足依赖权限
         /// </summary>
         /// <param name="context">Context.</param>
         Task<bool> IsSatisfiedAsync(IPermissionDependencyContext context);

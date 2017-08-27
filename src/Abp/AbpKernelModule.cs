@@ -98,6 +98,9 @@ namespace Abp
             }
         }
 
+        /// <summary>
+        /// 初始化AOP
+        /// </summary>
         private void InitializeInterceptors()
         {
             ValidationInterceptorRegistrar.Initialize(IocManager);
@@ -106,6 +109,9 @@ namespace Abp
             AuthorizationInterceptorRegistrar.Initialize(IocManager);
         }
 
+        /// <summary>
+        /// 注册过滤器
+        /// </summary>
         private void AddUnitOfWorkFilters()
         {
             Configuration.UnitOfWork.RegisterFilter(AbpDataFilters.SoftDelete, true);
