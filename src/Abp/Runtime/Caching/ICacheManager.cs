@@ -5,25 +5,23 @@ using JetBrains.Annotations;
 namespace Abp.Runtime.Caching
 {
     /// <summary>
-    /// An upper level container for <see cref="ICache"/> objects. 
-    /// A cache manager should work as Singleton and track and manage <see cref="ICache"/> objects.
+    /// <see cref="ICache"/>对象的一个上层容器
+    /// 应该是单例模式，用来跟踪/管理<see cref="ICache"/>对象
     /// </summary>
     public interface ICacheManager : IDisposable
     {
         /// <summary>
-        /// Gets all caches.
+        /// 获取所有的cache
         /// </summary>
-        /// <returns>List of caches</returns>
         IReadOnlyList<ICache> GetAllCaches();
 
         /// <summary>
-        /// Gets a <see cref="ICache"/> instance.
-        /// It may create the cache if it does not already exists.
+        /// 获取一个<see cref="ICache"/>实例
+        /// 如果不存在的话会创建一个缓存
         /// </summary>
         /// <param name="name">
-        /// Unique and case sensitive name of the cache.
+        /// 缓存的唯一名
         /// </param>
-        /// <returns>The cache reference</returns>
         [NotNull] ICache GetCache([NotNull] string name);
     }
 }

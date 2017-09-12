@@ -4,35 +4,27 @@ using Abp.Extensions;
 namespace Abp
 {
     /// <summary>
-    /// Used to identify a user.
+    /// 用户标识
     /// </summary>
     [Serializable]
     public class UserIdentifier : IUserIdentifier
     {
         /// <summary>
-        /// Tenant Id of the user.
-        /// Can be null for host users in a multi tenant application.
+        /// 用户的租户ID
+        /// 如果是host用户 tenantid为空
         /// </summary>
         public int? TenantId { get; protected set; }
 
         /// <summary>
-        /// Id of the user.
+        /// 用户的ID
         /// </summary>
         public long UserId { get; protected set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UserIdentifier"/> class.
-        /// </summary>
+        
         protected UserIdentifier()
         {
 
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UserIdentifier"/> class.
-        /// </summary>
-        /// <param name="tenantId">Tenant Id of the user.</param>
-        /// <param name="userId">Id of the user.</param>
         public UserIdentifier(int? tenantId, long userId)
         {
             TenantId = tenantId;
@@ -40,10 +32,10 @@ namespace Abp
         }
 
         /// <summary>
-        /// Parses given string and creates a new <see cref="UserIdentifier"/> object.
+        /// 解析字符串，创建一个<see cref="UserIdentifier"/>实例
         /// </summary>
         /// <param name="userIdentifierString">
-        /// Should be formatted one of the followings:
+        /// 应该是下面的格式
         /// 
         /// - "userId@tenantId". Ex: "42@3" (for tenant users).
         /// - "userId". Ex: 1 (for host users)
@@ -71,13 +63,11 @@ namespace Abp
         }
 
         /// <summary>
-        /// Creates a string represents this <see cref="UserIdentifier"/> instance.
-        /// Formatted one of the followings:
+        /// 返回一个字符串代表<see cref="UserIdentifier"/>实例
+        /// 应该是下面的格式
         /// 
         /// - "userId@tenantId". Ex: "42@3" (for tenant users).
         /// - "userId". Ex: 1 (for host users)
-        /// 
-        /// Returning string can be used in <see cref="Parse"/> method to re-create identical <see cref="UserIdentifier"/> object.
         /// </summary>
         public string ToUserIdentifierString()
         {

@@ -5,8 +5,7 @@ using Nito.AsyncEx;
 namespace Abp.Runtime.Caching
 {
     /// <summary>
-    /// Base class for caches.
-    /// It's used to simplify implementing <see cref="ICache"/>.
+    /// »º´æ»ùÀà
     /// </summary>
     public abstract class CacheBase : ICache
     {

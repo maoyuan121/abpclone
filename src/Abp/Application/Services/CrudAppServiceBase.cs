@@ -11,7 +11,7 @@ using Abp.ObjectMapping;
 namespace Abp.Application.Services
 {
     /// <summary>
-    /// This is a common base class for CrudAppService and AsyncCrudAppService classes.
+    /// CrudAppService 和 AsyncCrudAppService 的基类
     /// Inherit either from CrudAppService or AsyncCrudAppService, not from this class.
     /// </summary>
     public abstract class CrudAppServiceBase<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput> : ApplicationService

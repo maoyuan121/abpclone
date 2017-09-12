@@ -4,7 +4,7 @@ using System.Runtime.Caching;
 namespace Abp.Runtime.Caching.Memory
 {
     /// <summary>
-    /// Implements <see cref="ICache"/> to work with <see cref="MemoryCache"/>.
+    /// 缓存的内存实现。使用<see cref="MemoryCache"/>.
     /// </summary>
     public class AbpMemoryCache : CacheBase
     {
@@ -13,7 +13,7 @@ namespace Abp.Runtime.Caching.Memory
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="name">Unique name of the cache</param>
+        /// <param name="name">缓存的唯一名</param>
         public AbpMemoryCache(string name)
             : base(name)
         {

@@ -1,22 +1,22 @@
 namespace Abp.Runtime.Caching
 {
     /// <summary>
-    /// Names of standard caches used in ABP.
+    /// ABP内置标准缓存名
     /// </summary>
     public static class AbpCacheNames
     {
         /// <summary>
-        /// Application settings cache: AbpApplicationSettingsCache.
+        /// 应用配置缓存: AbpApplicationSettingsCache.
         /// </summary>
         public const string ApplicationSettings = "AbpApplicationSettingsCache";
 
         /// <summary>
-        /// Tenant settings cache: AbpTenantSettingsCache.
+        /// 租户配置缓存: AbpTenantSettingsCache.
         /// </summary>
         public const string TenantSettings = "AbpTenantSettingsCache";
 
         /// <summary>
-        /// User settings cache: AbpUserSettingsCache.
+        /// 用户配置缓存: AbpUserSettingsCache.
         /// </summary>
         public const string UserSettings = "AbpUserSettingsCache";
 

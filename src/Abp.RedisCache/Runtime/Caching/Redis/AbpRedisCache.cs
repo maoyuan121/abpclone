@@ -5,7 +5,7 @@ using StackExchange.Redis;
 namespace Abp.Runtime.Caching.Redis
 {
     /// <summary>
-    /// Used to store cache in a Redis server.
+    /// Redis缓存
     /// </summary>
     public class AbpRedisCache : CacheBase
     {

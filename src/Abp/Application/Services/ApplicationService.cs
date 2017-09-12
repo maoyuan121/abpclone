@@ -7,39 +7,39 @@ using Abp.Runtime.Session;
 namespace Abp.Application.Services
 {
     /// <summary>
-    /// This class can be used as a base class for application services. 
+    /// 应用服务的抽象基类
     /// </summary>
     public abstract class ApplicationService : AbpServiceBase, IApplicationService, IAvoidDuplicateCrossCuttingConcerns
     {
         public static string[] CommonPostfixes = { "AppService", "ApplicationService" };
 
         /// <summary>
-        /// Gets current session information.
+        /// 获取当前的session信息
         /// </summary>
         public IAbpSession AbpSession { get; set; }
         
         /// <summary>
-        /// Reference to the permission manager.
+        /// 权限管理器
         /// </summary>
         public IPermissionManager PermissionManager { protected get; set; }
 
         /// <summary>
-        /// Reference to the permission checker.
+        /// 权限检查器
         /// </summary>
         public IPermissionChecker PermissionChecker { protected get; set; }
 
         /// <summary>
-        /// Reference to the feature manager.
+        /// feature管理器
         /// </summary>
         public IFeatureManager FeatureManager { protected get; set; }
 
         /// <summary>
-        /// Reference to the feature checker.
+        /// feature检查器
         /// </summary>
         public IFeatureChecker FeatureChecker { protected get; set; }
 
         /// <summary>
-        /// Gets the applied cross cutting concerns.
+        /// 获取aop
         /// </summary>
         public List<string> AppliedCrossCuttingConcerns { get; } = new List<string>();
 
@@ -53,27 +53,27 @@ namespace Abp.Application.Services
         }
 
         /// <summary>
-        /// Checks if current user is granted for a permission.
+        /// 检查当前用户是有授予了某个权限 - 异步
         /// </summary>
-        /// <param name="permissionName">Name of the permission</param>
+        /// <param name="permissionName">权限名</param>
         protected virtual Task<bool> IsGrantedAsync(string permissionName)
         {
             return PermissionChecker.IsGrantedAsync(permissionName);
         }
 
         /// <summary>
-        /// Checks if current user is granted for a permission.
+        /// 检查当前用户是有授予了某个权限 - 同步
         /// </summary>
-        /// <param name="permissionName">Name of the permission</param>
+        /// <param name="permissionName">权限名</param>
         protected virtual bool IsGranted(string permissionName)
         {
             return PermissionChecker.IsGranted(permissionName);
         }
 
         /// <summary>
-        /// Checks if given feature is enabled for current tenant.
+        /// 检查当前租户是否授予了某个feature - 异步
         /// </summary>
-        /// <param name="featureName">Name of the feature</param>
+        /// <param name="featureName">feature名</param>
         /// <returns></returns>
         protected virtual Task<bool> IsEnabledAsync(string featureName)
         {
@@ -81,9 +81,9 @@ namespace Abp.Application.Services
         }
 
         /// <summary>
-        /// Checks if given feature is enabled for current tenant.
+        /// 检查当前租户是否授予了某个feature - 同步
         /// </summary>
-        /// <param name="featureName">Name of the feature</param>
+        /// <param name="featureName">feature名</param>
         /// <returns></returns>
         protected virtual bool IsEnabled(string featureName)
         {

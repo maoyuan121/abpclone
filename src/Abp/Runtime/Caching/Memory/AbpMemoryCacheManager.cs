@@ -5,7 +5,7 @@ using Abp.Runtime.Caching.Configuration;
 namespace Abp.Runtime.Caching.Memory
 {
     /// <summary>
-    /// Implements <see cref="ICacheManager"/> to work with <see cref="MemoryCache"/>.
+    /// 内存缓存管理器
     /// </summary>
     public class AbpMemoryCacheManager : CacheManagerBase
     {

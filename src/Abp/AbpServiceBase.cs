@@ -9,14 +9,12 @@ using Castle.Core.Logging;
 namespace Abp
 {
     /// <summary>
-    /// This class can be used as a base class for services.
-    /// It has some useful objects property-injected and has some basic methods
-    /// most of services may need to.
+    /// 服务的基类（应用服务，领域服务）
     /// </summary>
     public abstract class AbpServiceBase
     {
         /// <summary>
-        /// Reference to the setting manager.
+        /// setting管理器
         /// </summary>
         public ISettingManager SettingManager { get; set; }
 

@@ -9,7 +9,7 @@ using JetBrains.Annotations;
 namespace Abp.Runtime.Caching
 {
     /// <summary>
-    /// Base class for cache managers.
+    /// 缓存管理器的基类
     /// </summary>
     public abstract class CacheManagerBase : ICacheManager, ISingletonDependency
     {
@@ -66,10 +66,10 @@ namespace Abp.Runtime.Caching
         }
 
         /// <summary>
-        /// Used to create actual cache implementation.
+        /// 用来创建一个缓存
         /// </summary>
-        /// <param name="name">Name of the cache</param>
-        /// <returns>Cache object</returns>
+        /// <param name="name">缓存的唯一名</param>
+        /// <returns>缓存对象</returns>
         protected abstract ICache CreateCacheImplementation(string name);
     }
 }

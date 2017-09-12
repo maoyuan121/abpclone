@@ -1,12 +1,12 @@
 namespace Abp
 {
     /// <summary>
-    /// Used to define some constants for ABP.
+    /// 定义一些ABP的常量
     /// </summary>
     public static class AbpConsts
     {
         /// <summary>
-        /// Localization source name of ASP.NET Boilerplate framework.
+        /// ABP的多语言源名
         /// </summary>
         public const string LocalizationSourceName = "Abp";
     }

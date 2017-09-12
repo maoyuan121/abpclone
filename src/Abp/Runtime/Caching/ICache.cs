@@ -4,103 +4,95 @@ using System.Threading.Tasks;
 namespace Abp.Runtime.Caching
 {
     /// <summary>
-    /// Defines a cache that can be store and get items by keys.
+    /// 定义一个缓存用来存储或者通过key获取缓存项
     /// </summary>
     public interface ICache : IDisposable
     {
         /// <summary>
-        /// Unique name of the cache.
+        /// 缓存的唯一名
         /// </summary>
         string Name { get; }
 
         /// <summary>
-        /// Default sliding expire time of cache items.
-        /// Default value: 60 minutes (1 hour).
-        /// Can be changed by configuration.
+        /// 默认的缓存过期时间
+        /// 默认值: 60分钟
+        /// 可以用configuration修改
         /// </summary>
         TimeSpan DefaultSlidingExpireTime { get; set; }
 
         /// <summary>
-        /// Default absolute expire time of cache items.
-        /// Default value: null (not used).
+        /// 缓存的绝对过期时间
+        /// 默认值：null
         /// </summary>
         TimeSpan? DefaultAbsoluteExpireTime { get; set; }
 
         /// <summary>
-        /// Gets an item from the cache.
+        /// 获取一个缓存项（cache item）
         /// </summary>
-        /// <param name="key">Key</param>
-        /// <param name="factory">Factory method to create cache item if not exists</param>
-        /// <returns>Cached item</returns>
+        /// <param name="key">键</param>
+        /// <param name="factory">如果没用缓存用来创建缓存的工厂方法</param>
+        /// <returns>缓存项</returns>
         object Get(string key, Func<string, object> factory);
 
         /// <summary>
-        /// Gets an item from the cache.
+        /// 获取一个缓存项（cache item）
         /// </summary>
-        /// <param name="key">Key</param>
-        /// <param name="factory">Factory method to create cache item if not exists</param>
-        /// <returns>Cached item</returns>
+        /// <param name="key">键</param>
+        /// <param name="factory">如果没用缓存用来创建缓存的工厂方法</param>
+        /// <returns>缓存项</returns>
         Task<object> GetAsync(string key, Func<string, Task<object>> factory);
 
         /// <summary>
-        /// Gets an item from the cache or null if not found.
+        /// 获取一个缓存项，如果没有的话返回null
         /// </summary>
-        /// <param name="key">Key</param>
-        /// <returns>Cached item or null if not found</returns>
+        /// <param name="key">键</param>
+        /// <returns>缓存项或者null</returns>
         object GetOrDefault(string key);
 
         /// <summary>
-        /// Gets an item from the cache or null if not found.
+        /// 获取一个缓存项，如果没有的话返回null
         /// </summary>
-        /// <param name="key">Key</param>
-        /// <returns>Cached item or null if not found</returns>
+        /// <param name="key">键</param>
+        /// <returns>缓存项或者null</returns>
         Task<object> GetOrDefaultAsync(string key);
 
         /// <summary>
-        /// Saves/Overrides an item in the cache by a key.
-        /// Use one of the expire times at most (<paramref name="slidingExpireTime"/> or <paramref name="absoluteExpireTime"/>).
-        /// If none of them is specified, then
-        /// <see cref="DefaultAbsoluteExpireTime"/> will be used if it's not null. Othewise, <see cref="DefaultSlidingExpireTime"/>
-        /// will be used.
+        /// 设置一个缓存项
         /// </summary>
-        /// <param name="key">Key</param>
-        /// <param name="value">Value</param>
-        /// <param name="slidingExpireTime">Sliding expire time</param>
-        /// <param name="absoluteExpireTime">Absolute expire time</param>
+        /// <param name="key">键</param>
+        /// <param name="value">值</param>
+        /// <param name="slidingExpireTime">过期时间</param>
+        /// <param name="absoluteExpireTime">绝对过期时间</param>
         void Set(string key, object value, TimeSpan? slidingExpireTime = null, TimeSpan? absoluteExpireTime = null);
 
         /// <summary>
-        /// Saves/Overrides an item in the cache by a key.
-        /// Use one of the expire times at most (<paramref name="slidingExpireTime"/> or <paramref name="absoluteExpireTime"/>).
-        /// If none of them is specified, then
-        /// <see cref="DefaultAbsoluteExpireTime"/> will be used if it's not null. Othewise, <see cref="DefaultSlidingExpireTime"/>
-        /// will be used.
+        /// 设置一个缓存项
         /// </summary>
-        /// <param name="key">Key</param>
-        /// <param name="value">Value</param>
-        /// <param name="slidingExpireTime">Sliding expire time</param>
-        /// <param name="absoluteExpireTime">Absolute expire time</param>
+        /// <param name="key">键</param>
+        /// <param name="value">值</param>
+        /// <param name="slidingExpireTime">过期时间</param>
+        /// <param name="absoluteExpireTime">绝对过期时间</param>
         Task SetAsync(string key, object value, TimeSpan? slidingExpireTime = null, TimeSpan? absoluteExpireTime = null);
 
         /// <summary>
-        /// Removes a cache item by it's key.
+        /// 清除一个缓存项
         /// </summary>
-        /// <param name="key">Key</param>
+        /// <param name="key">键</param>
         void Remove(string key);
 
         /// <summary>
-        /// Removes a cache item by it's key (does nothing if given key does not exists in the cache).
+        /// 清除一个缓存项
         /// </summary>
-        /// <param name="key">Key</param>
+        /// <param name="key">键</param>
         Task RemoveAsync(string key);
 
         /// <summary>
-        /// Clears all items in this cache.
+        /// 清空这个缓存的所有item
         /// </summary>
         void Clear();
 
         /// <summary>
-        /// Clears all items in this cache.
+        /// 清空这个缓存的所有item
         /// </summary>
         Task ClearAsync();
     }
